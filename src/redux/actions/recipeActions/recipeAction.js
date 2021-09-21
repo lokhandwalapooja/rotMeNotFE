@@ -10,7 +10,7 @@ import RecipeListJsonData from "../../../Stubs/RecipeLists.json";
 
 export const getRecipeList = (data) => (dispatch) =>
   dispatch({
-    type: DeviceActionTypes.GET_EQUIPMENT_LIST,
+    type: RecipeActionTypes.GET_RECIPES_LIST,
     payload: data,
   });
 
@@ -21,8 +21,19 @@ export const getRecipe = (id) => {
     const equipment = data[index];
      
     dispatch({
-      type: DeviceActionTypes.GET_EQUIPMENT,
+      type: RecipeActionTypes.GET_EQUIPMENT,
       payload: equipment,
     });
   };
 };
+
+export const openRecipeModal = ({recipe, isRecipeReadOnly}) => (dispatch) =>
+  dispatch({
+    type: RecipeActionTypes.RECIPE_SELECTED,
+    payload: {recipe, isRecipeReadOnly},
+  });
+
+  export const closeRecipeModal = () => (dispatch) =>
+  dispatch({
+    type: RecipeActionTypes.CLOSE_RECIPE_MODAL,
+  });
