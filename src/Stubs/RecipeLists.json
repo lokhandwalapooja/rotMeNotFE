@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "equipment_name": "Equipment A",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal1",
+    "serial": "serial1",
+    "description": "This is Iphone1 and modal1",
+    "image": "/Images/10_Best_8GB_RAM_Mobile_Phones_in_India_Banner_Best_Phone_with_8GB_RAM_790x345.jpeg"
+  },
+  {
+    "id": "2",
+    "equipment_name": "Equipment B",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal2",
+    "serial": "serial2",
+    "description": "This is Iphone2 and modal2",
+    "image": "/Images/bfarsace_201106_4269_012.0.jpg"
+  },
+  {
+    "id": "3",
+    "equipment_name": "Equipment C",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal3",
+    "serial": "serial3",
+    "description": "This is Iphone3 and modal3",
+    "image": "/Images/download.jpeg"
+  },
+  {
+    "id": "4",
+    "equipment_name": "Equipment D",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal4",
+    "serial": "serial4",
+    "description": "This is Iphone4 and modal4",
+    "image": "/Images/images.jpeg"
+  },
+  {
+    "id": "5",
+    "equipment_name": "Equipment E",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal5",
+    "serial": "serial5",
+    "description": "This is Iphone5 and modal5",
+    "image": "/Images/photo-1511707171634-5f897ff02aa9.jpeg"
+  },
+  {
+    "id": "6",
+    "equipment_name": "Equipment F",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal6",
+    "serial": "serial6",
+    "description": "This is Iphone6 and modal6",
+    "image": "/Images/ptU7LZb3NZ8b6oetjsaKpF.jpeg"
+  },
+  {
+    "id": "7",
+    "equipment_name": "Equipment G",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal7",
+    "serial": "serial7",
+    "description": "This is Iphone7 and modal7",
+    "image": "/Images/10_Best_8GB_RAM_Mobile_Phones_in_India_Banner_Best_Phone_with_8GB_RAM_790x345.jpeg"
+  },
+  {
+    "id": "8",
+    "equipment_name": "Equipment H",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal8",
+    "serial": "serial8",
+    "description": "This is Iphone8 and modal8",
+    "image": "/Images/bfarsace_201106_4269_012.0.jpg"
+  },
+  {
+    "id": "9",
+    "equipment_name": "Equipment I",
+    "vendor": "iphone",
+    "location": "USA",
+    "modal": "modal9",
+    "serial": "serial9",
+    "description": "This is Iphone9 and modal9",
+    "image": "/Images/download.jpeg"
+  }
+]
