@@ -19,10 +19,11 @@ const Home = () => {
             <div className="carousel-item carousel-image-1 active">
               <div className="container carousel-image-1">
                 <div className="carousel-caption d-none d-sm-block text-right mb-5">
-                  <h1 className="display-3">Submit a recipe</h1>
+                  <h1 className="display-3">Heading One</h1>
                   <p className="lead">
-                  Are you an amateur cook looking to share your recipes with the world?
-                                ROT-ME-NOT is looking for you!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste, aperiam vel ullam deleniti reiciendis ratione quod
+                    aliquid inventore vero perspiciatis.
                   </p>
                   <a href="#" className="btn btn-danger btn-lg">
                     Sign Up Now
@@ -33,9 +34,11 @@ const Home = () => {
             <div className="carousel-item carousel-image-2">
               <div className="container">
                 <div className="carousel-caption d-none d-sm-block mb-5">
-                  <h1 className="display-3">Click to look for recipes</h1>
+                  <h1 className="display-3">Heading Two</h1>
                   <p className="lead">
-                    Browse through our virtual cookbook to explore a plethora of cuisines all over the planet.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste, aperiam vel ullam deleniti reiciendis ratione quod
+                    aliquid inventore vero perspiciatis.
                   </p>
                   <a href="#" className="btn btn-primary btn-lg">
                     Learn More
@@ -47,9 +50,11 @@ const Home = () => {
             <div className="carousel-item carousel-image-3">
               <div className="container">
                 <div className="carousel-caption d-none d-sm-block text-right mb-5">
-                  <h1 className="display-3">ROT-ME-NOT</h1>
+                  <h1 className="display-3">Heading Three</h1>
                   <p className="lead">
-                    Fridge full of food but don't know what to cook?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste, aperiam vel ullam deleniti reiciendis ratione quod
+                    aliquid inventore vero perspiciatis.
                   </p>
                   <a href="#" className="btn btn-success btn-lg">
                     Learn More

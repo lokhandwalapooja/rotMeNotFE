@@ -12,7 +12,7 @@ class Layout extends Component {
   render() {
     return (
       <Aux>
-        <Header />
+        <Header {...this.props}/>
         {this.props.children}
         <Footer />
       </Aux>

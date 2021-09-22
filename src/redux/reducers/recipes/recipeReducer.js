@@ -31,6 +31,8 @@ export const recipeReducer = (state = initialState, action) => {
     case RecipeActionTypes.CLOSE_RECIPE_MODAL:
       return updateObject(state, {openRecipeModal: false});
 
+      case RecipeActionTypes.FILTER_RECIPE_LIST:
+        return updateObject(state, {recipeList: action.payload})
     default:
       return state;
   }

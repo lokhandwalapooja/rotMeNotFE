@@ -4,12 +4,26 @@ import Select from "react-select";
 const ReactSelect = (props) => {
   const [selectedOption, setSelectedOption] = useState(props.value);
 
-  const { className, options, placeholder, isMulti ,readOnly} = props;
+  const {
+    className,
+    options,
+    placeholder,
+    isMulti,
+    readOnly,
+    onSelectChange,
+    name,
+  } = props;
+
+  const setValue = (name, value) => {
+    onSelectChange(name, value);
+    setSelectedOption(value);
+  };
+
   return (
     <Select
       value={selectedOption}
       isMulti={isMulti}
-      onChange={(selectedOption) => setSelectedOption(selectedOption)}
+      onChange={(selectedOption) => setValue(name, selectedOption)}
       options={options}
       className={className}
       placeholder={placeholder}

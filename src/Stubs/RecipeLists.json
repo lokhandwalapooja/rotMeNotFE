@@ -1,7 +1,7 @@
 [  
   {
     "id": 1,
-    "recipeName": "Avacado Roast",
+    "recipeName": "test recipe",
     "ingredients": [
       {
         "ingredientId": 1,
@@ -27,7 +27,7 @@
     "cuisine": {"id": 4,"name": "Italian"},
     "time": 55,
     "cost": 24.99,
-    "status": "approved",
+    "status": "Approved",
     "submittedBy": {"name": "Manisha"},
     "publishedBy": 1,
     "comments": [
@@ -46,7 +46,7 @@
   },
   {
     "id": 2,
-    "recipeName": "Omlette",
+    "recipeName": "bad recipe",
     "ingredients": [
       {
         "ingredientId": 2,
@@ -67,7 +67,7 @@
     "cuisine": {"id": 2,"name": "Continental"},
     "time": 25,
     "cost": 4.99,
-    "status": "rejected",
+    "status": "Approved",
     "submittedBy": {"name": "Pooja"},
     "publishedBy": 1,
     "comments": [],
@@ -77,7 +77,7 @@
   },
   {
     "id": 3,
-    "recipeName": "Tomato Curry",
+    "recipeName": "new recipe",
     "ingredients": [
       {
         "ingredientId": 1,
@@ -103,7 +103,7 @@
     "cuisine": {"id": 1, "name": "Indian"} ,
     "time": 45,
     "cost": 124.99,
-    "status": "pending",
+    "status": "Approved",
     "submittedBy": {"name": "Dingu"},
     "publishedBy": null,
     "comments": [],
@@ -111,5 +111,4 @@
     "createdAt": "09-15",
     "updatedAt": "15-15"
   }
-
 ]

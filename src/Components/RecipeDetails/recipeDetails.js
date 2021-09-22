@@ -6,30 +6,33 @@ import { Cuisine } from "../../utility/constants/constants";
 import ReactSelect from "../../Components/Select/ReactSelect";
 import Rating from "../Rating/rating";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState , ContentState} from "draft-js";
+import { EditorState, ContentState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const RecipeDetails = (props) => {
   const recipeData = useSelector((state) => state.recipeReducer.recipe);
-  const isRecipeReadOnly = useSelector((state) => state.recipeReducer.isRecipeReadOnly);
+  const isRecipeReadOnly = useSelector(
+    (state) => state.recipeReducer.isRecipeReadOnly
+  );
 
   const dispatch = useDispatch();
 
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createWithContent(ContentState.createFromText(recipeData?.description))
+    EditorState.createWithContent(
+      ContentState.createFromText(recipeData?.description)
+    )
   );
 
   useEffect(() => {
     console.log(editorState);
   }, [editorState]);
 
-
   const setCusineValue = (cuisine) => {
     return {
-        value: cuisine.id,
-        label: cuisine.name
-    }
-  }
+      value: cuisine.id,
+      label: cuisine.name,
+    };
+  };
 
   let initialFormValues = {
     recipeName: recipeData.recipeName,
@@ -40,9 +43,9 @@ const RecipeDetails = (props) => {
     submittedBy: recipeData.submittedBy.name,
     isHealthy: recipeData.isHealthy,
     time: recipeData.time,
-    ratings: recipeData.ratings
+    ratings: recipeData.ratings,
   };
-  debugger;
+
   return (
     <div className="modal recipeDetails" id="loginModal">
       <div className="modal-dialog mw-100 w-50">
@@ -64,7 +67,6 @@ const RecipeDetails = (props) => {
             // validationSchema={validateAccountInfoForm}
           >
             {(formik_props) => {
-                debugger;
               const errors = formik_props.errors;
               const touched = formik_props.touched;
               console.log(errors, "erros");
@@ -143,15 +145,37 @@ const RecipeDetails = (props) => {
                         </div>
                       </div>
                       <div className="form-row ">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">Ingredinet</th>
+                              <th scope="col">Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {recipeData.ingredients.map((i) => {
+                              return (
+                                <tr>
+                                  <td>{i.ingredientName}</td>
+                                  <td>{i.quantity}</td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div className="form-row ">
                         <div className="col">
                           <label for="isHealthy"></label>
                           <div className="form-check">
                             <label className="form-check-label mr-2">
-                              <Field
+                              <input
                                 type="checkbox"
-                                value={"checked"}
+                                checked={formik_props.values.isHealthy}
+                                name="isHealthy"
                                 className="form-check-input"
-                              />{" "}
+                                readOnly={isRecipeReadOnly}
+                              />
                               Is Healthy
                             </label>
                           </div>
@@ -163,7 +187,12 @@ const RecipeDetails = (props) => {
                               className="form-check-label mr-2"
                               style={{ marginLeft: "170px" }}
                             >
-                              <Rating readOnly={isRecipeReadOnly} name="rating" value={formik_props.values.ratings} className="form-check-input" />{" "}
+                              <Rating
+                                readOnly={isRecipeReadOnly}
+                                name="rating"
+                                value={formik_props.values.ratings}
+                                className="form-check-input"
+                              />{" "}
                               <span className="ratings">Rating</span>
                             </label>
                           </div>
@@ -177,7 +206,7 @@ const RecipeDetails = (props) => {
                             editorClassName="editorClass"
                             editorState={editorState}
                             onEditorStateChange={setEditorState}
-                          readOnly={isRecipeReadOnly}
+                            readOnly={isRecipeReadOnly}
                           />
 
                           {/* </div> */}
