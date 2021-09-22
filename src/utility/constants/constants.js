@@ -15,7 +15,7 @@ export const colourOptions = [
 export const Cuisine = [
   { value: 1, label: "Indian" },
   { value: 2, label: "Continental" },
-  { value: 3, label: "Chinees" },
+  { value: 3, label: "Chinese" },
   { value: 4, label: "Italian" },
   { value: 5, label: "Koriean" },
 ];
