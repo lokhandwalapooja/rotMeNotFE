@@ -55,10 +55,8 @@ const RecipeContainer = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-md-6 m-auto text-center">
-              <h1>Read Our Blog</h1>
+              <h1>ROT-ME-NOT has hand-picked expert chefs for guidance who strive to share their love for food with you and try to enhance your culinary experience</h1>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas,
-                temporibus?
               </p>
             </div>
           </div>
