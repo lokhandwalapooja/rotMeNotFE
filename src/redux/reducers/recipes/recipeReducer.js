@@ -2,7 +2,7 @@ import { RecipeActionTypes } from "../../actions/recipeActions/actionType";
 import RecipeList from '../../../Stubs/RecipeLists.json';
 
 export const initialState = {
-  token: true,
+  token: false,
   recipeList: null,
   recipe: null,
   openRecipeModal: false,
