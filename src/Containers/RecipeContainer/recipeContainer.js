@@ -8,10 +8,7 @@ import {
 } from "../../utility/constants/constants";
 import RecipeDetails from "../../Components/RecipeDetails/recipeDetails";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getRecipeList,
-  filterRecipeList,
-} from "../../redux/actions/recipeActions/recipeAction";
+import { getRecipeList, filterRecipeList } from "../../redux/actions/recipeActions/recipeAction";
 
 const RecipeContainer = (props) => {
   const dispatch = useDispatch();
@@ -29,7 +26,7 @@ const RecipeContainer = (props) => {
   }, []);
 
   useEffect(() => {
-    dispatch(filterRecipeList(recipeSearchObject));
+    dispatch(filterRecipeList(recipeSearchObject))
   }, [recipeSearchObject]);
 
   const isOpenModal = useSelector(
@@ -48,8 +45,7 @@ const RecipeContainer = (props) => {
       recipeName: name === "recipeName" ? value : state.recipeName,
       status: name === "status" ? value.value : state.status,
       cuisine: name === "cuisine" ? value.value : state.cuisine,
-      ingredients:
-        name === "ingredients" ? value.map((v) => v.value) : state.ingredients,
+      ingredients: name === "ingredients" ? value.map(v => v.value) : state.ingredients,
     }));
   };
 
@@ -59,10 +55,8 @@ const RecipeContainer = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-md-6 m-auto text-center">
-              <h1>Read Our Blog</h1>
+              <h1>ROT-ME-NOT has hand-picked expert chefs for guidance who strive to share their love for food with you and try to enhance your culinary experience</h1>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas,
-                temporibus?
               </p>
             </div>
           </div>
@@ -70,26 +64,26 @@ const RecipeContainer = (props) => {
       </header>
 
       {/* SEARCH SECTION */}
-      <div style={{ margin: "10px" }}>
-        <div className="form-inline ml-1  mt-4">
+      <div className="form-inline" style={{ backgroundColor: "#2125290a" }}>
+        <div className="form-inline ml-5 mr-5 mt-4 py-3 float-right d-flex flex-row">
           <input
             type="text"
             name="recipeName"
-            className="form-control mr-3 mt-3"
+            className="form-control mr-3"
             placeholder="Search Recipe"
             onChange={(e) => filterRecipes(e.target.name, e.target.value)}
           />
           <ReactSelect
             options={Status}
             name="status"
-            className="filters mr-3 mt-3"
+            className="filters mr-3"
             placeholder="Approved"
             onSelectChange={filterRecipes}
           />
           <ReactSelect
             options={Cuisine}
             name="cuisine"
-            className="filters mr-3 mt-3"
+            className="filters mr-3"
             placeholder="Search Cusine"
             onSelectChange={filterRecipes}
           />
@@ -97,7 +91,7 @@ const RecipeContainer = (props) => {
             isMulti={true}
             name="ingredients"
             options={Ingredients}
-            className="multi-filters mr-3 mt-3"
+            className="multi-filters mr-3"
             placeholder="Search Ingredient"
             onSelectChange={filterRecipes}
           />
@@ -106,7 +100,7 @@ const RecipeContainer = (props) => {
       </div>
       {/* <!-- BLOG SECTION --> */}
       <section id="blog" className="py-3 recipes-block">
-        <div className="container recipes_list">
+        <div className="container">
           <div className="row">
             <div className="col">
               <div className="card-columns">{recipies()}</div>

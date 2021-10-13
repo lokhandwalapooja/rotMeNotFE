@@ -169,13 +169,12 @@ const RecipeDetails = (props) => {
                           <label for="isHealthy"></label>
                           <div className="form-check">
                             <label className="form-check-label mr-2">
-                              <Field
+                              <input
                                 type="checkbox"
                                 checked={formik_props.values.isHealthy}
                                 name="isHealthy"
                                 className="form-check-input"
-                                // disabled={isRecipeReadOnly}
-                                // readOnly={isRecipeReadOnly}
+                                readOnly={isRecipeReadOnly}
                               />
                               Is Healthy
                             </label>

@@ -130,10 +130,6 @@ body {
 >>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
 }
 
-.icon_primary {
-  color: #3292a6;
-}
-
 .recipes-block {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -194,10 +190,6 @@ body {
   border-top: none !important;
 }
 
-.recipes_list {
-  margin-bottom: 100px;
-}
-
 @media (max-width: 768px) {
   #showcase {
     min-height: 500px;
@@ -210,21 +202,4 @@ body {
   .mb-resp {
     margin-bottom: 1rem;
   }
-}
-
-// INGREDIENTS PAGE
-#ingredient-page-header {
-  height: 200px;
-  background: url('../scssImges/istockphoto-1227198304-1024x1024.jpeg');
-  background-position: 0 -360px;
-  background-attachment: fixed;
-  color: #fff;
-  border-bottom: 1px #eee solid;
-  padding-top: 50px;
-}
-
-// ERROR MESSAGE
-.error {
-  color: rgb(221, 39, 38);
-  font-size: 13px
 }

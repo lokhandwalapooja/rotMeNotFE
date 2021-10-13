@@ -24,7 +24,7 @@ class App extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-  token: state.authReducer.token
+  token: state.recipeReducer.token
 });
 
 export default connect(mapStateToProps)(withRouter(App));

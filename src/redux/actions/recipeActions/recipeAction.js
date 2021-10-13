@@ -61,7 +61,7 @@ export const filterRecipeList = (recipeObject) => (dispatch, getState) => {
         .toLowerCase()
         .indexOf(recipeObject.cuisine.toString().trim().toLowerCase()) > -1 &&
       recipe.ingredients.filter((i) =>
-        i.id
+        i.ingredientId
           .toString()
           .trim()
           .toLowerCase()

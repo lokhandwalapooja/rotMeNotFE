@@ -4,10 +4,6 @@ import Layout from "../hoc/Layout/Layout";
 import { routes } from "../utility/constants/constants";
 import Home from "../Containers/Home/home";
 import RecipeContainer from "../Containers/RecipeContainer/recipeContainer";
-import SignIn from "../Containers/SignIn/signIn";
-import SingUp from "../Containers/SignUp/signUp";
-import Oux from "../hoc/Oux/Oux";
-import Ingredients from "../Containers/Ingredients/ingredients";
 
 const Router = (props) => {
   let routeList = null;
@@ -18,7 +14,6 @@ const Router = (props) => {
       <Switch>
         <Route exact path={routes.ROOT} component={Home} />
         <Route exact path={routes.RECIPIES_LIST} component={RecipeContainer}/>
-        <Route exact path={routes.INGREDIENTS} component={Ingredients}/>
         <Route path="*" render={() => <Redirect to={routes.ROOT} />} />
       </Switch>
     );
@@ -26,14 +21,12 @@ const Router = (props) => {
     //when user is not logged in
     routeList = (
       <Switch>
-        <Route exact path={routes.SIGN_IN} component={SignIn} />
-        <Route exact path={routes.SIGN_UP} component={SingUp} />
-        <Route path="*" render={(props) => <Redirect to={routes.SIGN_IN} />} />
+        <Route path="*" render={(props) => <Redirect to={routes.ROOT} />} />
       </Switch>
     );
   }
 
-  return props.token ? <Layout>{routeList}</Layout> : <Oux>{routeList}</Oux>;
+  return <Layout>{routeList}</Layout>;
 };
 
 export default Router;
