@@ -2,6 +2,9 @@ export const routes = {
   ROOT: "/",
   RECIPIES_LIST: "/recipes-list",
   RECIPE: "/recipes-list/recipe",
+  SIGN_IN: "/sign-in",
+  SIGN_UP: "/sign-up",
+  INGREDIENTS: "/ingredients" 
 };
 
 export const colourOptions = [
@@ -15,7 +18,7 @@ export const colourOptions = [
 export const Cuisine = [
   { value: 1, label: "Indian" },
   { value: 2, label: "Continental" },
-  { value: 3, label: "Chinese" },
+  { value: 3, label: "Chinees" },
   { value: 4, label: "Italian" },
   { value: 5, label: "Koriean" },
 ];

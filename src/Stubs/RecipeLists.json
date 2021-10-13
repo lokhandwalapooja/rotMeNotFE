@@ -4,17 +4,17 @@
     "recipeName": "test recipe",
     "ingredients": [
       {
-        "ingredientId": 1,
+        "id": 1,
         "ingredientName": "tomato puree",
         "quantity": "5 cups"
       },
       {
-        "ingredientId": 4,
+        "id": 4,
         "ingredientName": "cumin",
         "quantity": "5 grams"
       },
       {
-        "ingredientId": 5,
+        "id": 5,
         "ingredientName": "salt",
         "quantity": "to taste"
       }
@@ -49,12 +49,12 @@
     "recipeName": "bad recipe",
     "ingredients": [
       {
-        "ingredientId": 2,
+        "id": 2,
         "ingredientName": "eggs",
         "quantity": "5 no"
       },
       {
-        "ingredientId": 5,
+        "id": 5,
         "ingredientName": "salt",
         "quantity": "to taste"
       }
@@ -80,17 +80,17 @@
     "recipeName": "new recipe",
     "ingredients": [
       {
-        "ingredientId": 1,
+        "id": 1,
         "ingredientName": "tomato puree",
         "quantity": "1/2 liter"
       },
       {
-        "ingredientId": 4,
+        "id": 4,
         "ingredientName": "cumin",
         "quantity": "15 grams"
       },
       {
-        "ingredientId": 5,
+        "id": 5,
         "ingredientName": "salt",
         "quantity": "to taste"
       }

@@ -1,8 +1,11 @@
 import React from "react";
 import { routes } from "../../utility/constants/constants";
+import {useDispatch} from 'react-redux';
+import { logout } from "../../redux/actions/userAction/userActions";
 
 const Header = (props) => {
   const { history } = props;
+  const dispatch = useDispatch();
 
   return (
     <nav className="navbar navbar-expand-md navbar-light" id="main-nav">
@@ -42,13 +45,14 @@ const Header = (props) => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="javascript:void(0)" className="nav-link">
-                Add Ingredient
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="javascript:void(0)" className="nav-link">
-                Submit Recipe
+              <a 
+              href="javascript:void(0)" 
+              className={`nav-link ${
+                history.location.pathname === routes.INGREDIENTS ? `active` : ""
+              }`}
+              onClick={() => history.push(routes.INGREDIENTS)}
+              >
+                Ingredients
               </a>
             </li>
             <li className="nav-item">
@@ -56,7 +60,9 @@ const Header = (props) => {
                 href="javascript:void(0)"
                 onClick={() => history.push(routes.RECIPIES_LIST)}
                 className={`nav-link ${
-                  history.location.pathname === routes.RECIPIES_LIST ? `active` : ""
+                  history.location.pathname === routes.RECIPIES_LIST
+                    ? `active`
+                    : ""
                 }`}
               >
                 Recipes
@@ -65,6 +71,15 @@ const Header = (props) => {
             <li className="nav-item">
               <a href="#about" className="nav-link">
                 About
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                href="javascript:void(0)"
+                className="nav-link"
+                onClick={() => dispatch(logout())}
+              >
+                Logout
               </a>
             </li>
           </ul>
