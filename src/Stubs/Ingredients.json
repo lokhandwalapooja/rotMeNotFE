@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "ingredientName": "tomato puree",
+        "quantity": "5 cups"
+      },
+      {
+        "id": 2,
+        "ingredientName": "eggs",
+        "quantity": "5 no"
+      },
+      {
+        "id": 3,
+        "ingredientName": "milk",
+        "quantity": "5 no"
+      },
+      {
+        "id": 4,
+        "ingredientName": "cumin",
+        "quantity": "5 grams"
+      },
+      {
+        "id": 5,
+        "ingredientName": "salt",
+        "quantity": "to taste"
+      }
+]

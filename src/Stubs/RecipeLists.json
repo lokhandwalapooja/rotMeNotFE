@@ -1,92 +1,114 @@
-[
+[  
   {
-    "id": "1",
-    "equipment_name": "Equipment A",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal1",
-    "serial": "serial1",
-    "description": "This is Iphone1 and modal1",
-    "image": "/Images/10_Best_8GB_RAM_Mobile_Phones_in_India_Banner_Best_Phone_with_8GB_RAM_790x345.jpeg"
+    "id": 1,
+    "recipeName": "test recipe",
+    "ingredients": [
+      {
+        "id": 1,
+        "ingredientName": "tomato puree",
+        "quantity": "5 cups"
+      },
+      {
+        "id": 4,
+        "ingredientName": "cumin",
+        "quantity": "5 grams"
+      },
+      {
+        "id": 5,
+        "ingredientName": "salt",
+        "quantity": "to taste"
+      }
+    ],
+    "isHealthy": true,
+    "img": "https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    "calories": "50 Kcal",
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "ratings": 3,
+    "cuisine": {"id": 4,"name": "Italian"},
+    "time": 55,
+    "cost": 24.99,
+    "status": "Approved",
+    "submittedBy": {"name": "Manisha"},
+    "publishedBy": 1,
+    "comments": [
+      { 
+        "userName": "harsha",
+        "comment": "what a great recipe!"
+      },
+      { 
+        "userName": "shravan",
+        "comment": "thanks man"
+      }
+    ],
+    "publishedAt": "2009-06-15T13:45:30",
+    "createdAt": "06-15",
+    "updatedAt": "2009-06-15T13:45:30"
   },
   {
-    "id": "2",
-    "equipment_name": "Equipment B",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal2",
-    "serial": "serial2",
-    "description": "This is Iphone2 and modal2",
-    "image": "/Images/bfarsace_201106_4269_012.0.jpg"
+    "id": 2,
+    "recipeName": "bad recipe",
+    "ingredients": [
+      {
+        "id": 2,
+        "ingredientName": "eggs",
+        "quantity": "5 no"
+      },
+      {
+        "id": 5,
+        "ingredientName": "salt",
+        "quantity": "to taste"
+      }
+    ],
+    "isHealthy": true,
+    "img": "https://images.pexels.com/photos/1351238/pexels-photo-1351238.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "calories": "500 cal",
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "ratings": 5,
+    "cuisine": {"id": 2,"name": "Continental"},
+    "time": 25,
+    "cost": 4.99,
+    "status": "Approved",
+    "submittedBy": {"name": "Pooja"},
+    "publishedBy": 1,
+    "comments": [],
+    "publishedAt": "2009-06-15T13:45:30",
+    "createdAt": "08-15",
+    "updatedAt": "2009-06-15T13:45:30"
   },
   {
-    "id": "3",
-    "equipment_name": "Equipment C",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal3",
-    "serial": "serial3",
-    "description": "This is Iphone3 and modal3",
-    "image": "/Images/download.jpeg"
-  },
-  {
-    "id": "4",
-    "equipment_name": "Equipment D",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal4",
-    "serial": "serial4",
-    "description": "This is Iphone4 and modal4",
-    "image": "/Images/images.jpeg"
-  },
-  {
-    "id": "5",
-    "equipment_name": "Equipment E",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal5",
-    "serial": "serial5",
-    "description": "This is Iphone5 and modal5",
-    "image": "/Images/photo-1511707171634-5f897ff02aa9.jpeg"
-  },
-  {
-    "id": "6",
-    "equipment_name": "Equipment F",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal6",
-    "serial": "serial6",
-    "description": "This is Iphone6 and modal6",
-    "image": "/Images/ptU7LZb3NZ8b6oetjsaKpF.jpeg"
-  },
-  {
-    "id": "7",
-    "equipment_name": "Equipment G",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal7",
-    "serial": "serial7",
-    "description": "This is Iphone7 and modal7",
-    "image": "/Images/10_Best_8GB_RAM_Mobile_Phones_in_India_Banner_Best_Phone_with_8GB_RAM_790x345.jpeg"
-  },
-  {
-    "id": "8",
-    "equipment_name": "Equipment H",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal8",
-    "serial": "serial8",
-    "description": "This is Iphone8 and modal8",
-    "image": "/Images/bfarsace_201106_4269_012.0.jpg"
-  },
-  {
-    "id": "9",
-    "equipment_name": "Equipment I",
-    "vendor": "iphone",
-    "location": "USA",
-    "modal": "modal9",
-    "serial": "serial9",
-    "description": "This is Iphone9 and modal9",
-    "image": "/Images/download.jpeg"
+    "id": 3,
+    "recipeName": "new recipe",
+    "ingredients": [
+      {
+        "id": 1,
+        "ingredientName": "tomato puree",
+        "quantity": "1/2 liter"
+      },
+      {
+        "id": 4,
+        "ingredientName": "cumin",
+        "quantity": "15 grams"
+      },
+      {
+        "id": 5,
+        "ingredientName": "salt",
+        "quantity": "to taste"
+      }
+    ],
+    "isHealthy": false,
+    "img": "https://images.pexels.com/photos/3493579/pexels-photo-3493579.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "calories": "250 Kcal",
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "ratings": null,
+    "cuisine": {"id": 1, "name": "Indian"} ,
+    "time": 45,
+    "cost": 124.99,
+    "status": "Approved",
+    "submittedBy": {"name": "Dingu"},
+    "publishedBy": null,
+    "comments": [],
+    "publishedAt": null,
+    "createdAt": "09-15",
+    "updatedAt": "15-15"
   }
 ]

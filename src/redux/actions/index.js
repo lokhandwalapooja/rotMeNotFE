@@ -1,4 +1,6 @@
 export {
     getEquipmentList,
-    getEquipment
-} from './deviceActions/deviceAction';
+    getEquipment,
+    openRecipeModal,
+    closeRecipeModal
+} from './recipeActions/recipeAction';
