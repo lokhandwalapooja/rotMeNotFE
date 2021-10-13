@@ -11,7 +11,7 @@ const headers = {
 }
 
 export const login = (credentials) => {
-    debugger;
+     
     return axios.post('auth/login', credentials);
 };
 
