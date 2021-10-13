@@ -73,6 +73,10 @@ const Login = (props) => {
                     </div> */}
                     <div className="form-group">
                       <button
+<<<<<<< HEAD
+=======
+                        name="firstName"
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
                         type="submit"
                         className="btn float-right login_btn"
                       >

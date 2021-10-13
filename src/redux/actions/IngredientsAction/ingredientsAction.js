@@ -1,11 +1,15 @@
 import { IngredientsActionTypes } from "./actionType";
 import * as API from "../../../Api/ingredinetApi";
+<<<<<<< HEAD
 import { closeModel } from "../../../utility/utility";
+=======
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
 
 export const getIngredientsList = () => (dispatch) =>
   dispatch({
     type: IngredientsActionTypes.GET_INGREDIENTS,
     payload: API.getIngredinetsList()
+<<<<<<< HEAD
       .then((response) => {
         return response.data.ingredients;
       })
@@ -55,3 +59,14 @@ export const closeIngredientModal = () => (dispatch) => {
     type: IngredientsActionTypes.CLOSE_INGREDIENT_MODAL,
   });
 };
+=======
+    .then(response => {
+        return response.data.ingredients;
+    })
+    .catch((error) => {
+        console.log(error);
+        // errorHandler(error);
+        return error;
+      })
+  });
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9

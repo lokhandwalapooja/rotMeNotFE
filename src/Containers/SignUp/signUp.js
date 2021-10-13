@@ -134,7 +134,11 @@ const SingUp = (props) => {
                         type="submit"
                         className="btn float-right login_btn"
                       >
+<<<<<<< HEAD
                         Sign Up
+=======
+                        Login
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
                       </button>
                     </div>
                   </Form>
@@ -149,7 +153,11 @@ const SingUp = (props) => {
                 onClick={() => history.push(routes.SIGN_IN)}
                 href="javascript:void(0)"
               >
+<<<<<<< HEAD
                 Login
+=======
+                Sign Up
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
               </a>
             </div>
             {/* <div className="d-flex justify-content-center">

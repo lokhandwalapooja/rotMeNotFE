@@ -25,6 +25,7 @@ export const ingredientsReducer = (state = initialState, action) => {
         ingredientsList: action.payload,
       });
 
+<<<<<<< HEAD
     case IngredientsActionTypes.ADD_INGREDIENT_CLICKED:
       return updateObject(state, {
         openIngredientModal: true,
@@ -58,14 +59,20 @@ export const ingredientsReducer = (state = initialState, action) => {
         openIngredientModal: true,
       });
 
+=======
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
     case IngredientsActionTypes.GET_INGREDIENT:
       return updateObject(state, { recipe: action.payload });
 
     case IngredientsActionTypes.CLOSE_INGREDIENT_MODAL:
+<<<<<<< HEAD
       return updateObject(state, {
         openIngredientModal: false,
         ingredient: {},
       });
+=======
+      return updateObject(state, { openRecipeModal: false });
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
 
     default:
       return state;

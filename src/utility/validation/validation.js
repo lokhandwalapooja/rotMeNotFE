@@ -53,6 +53,7 @@ export const signUpValidation = (values) => {
   }
    
   return errors; 
+<<<<<<< HEAD
 }
 
 export const ingredientValidation = (values) => {
@@ -68,3 +69,6 @@ export const ingredientValidation = (values) => {
    
   return errors;
 };
+=======
+}
+>>>>>>> 8879fb41a437e547c83d351a05620fdd333852f9
