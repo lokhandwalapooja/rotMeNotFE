@@ -1,6 +1,7 @@
 import { IngredientsActionTypes } from "./actionType";
 import * as API from "../../../Api/ingredinetApi";
-import { closeModel } from "../../../utility/utility";
+import { closeModel, ReactTostify } from "../../../utility/utility";
+import { TostType } from "../../../utility/constants/constants";
 
 export const getIngredientsList = () => (dispatch) =>
   dispatch({
@@ -33,22 +34,25 @@ export const addIngredient = (data) => (dispatch) => {
   dispatch({
     type: IngredientsActionTypes.ADD_INGREDIENT,
     payload: API.addIngredientData(data).then((response) => {
-        closeModel();
-      dispatch(getIngredientsList())
+      closeModel();
+      ReactTostify("Ingredient Successfully Added", TostType.SUCCESS);
+      dispatch(getIngredientsList());
     }),
   });
 };
 
-export const updateIngredient = ({name, id}) => dispatch =>  {
+export const updateIngredient =
+  ({ name, id }) =>
+  (dispatch) => {
     dispatch({
-        type: IngredientsActionTypes.UPDATE_INGREDIENT,
-        payload: API.updateIngredientData(name, id)
-        .then(response => {
-            closeModel();
-            return response.data.ingredients;
-        })
-    })
-}
+      type: IngredientsActionTypes.UPDATE_INGREDIENT,
+      payload: API.updateIngredientData(name, id).then((response) => {
+        closeModel();
+        ReactTostify("Ingredient Successfully Updated", TostType.SUCCESS);
+        return response.data.ingredients;
+      }),
+    });
+  };
 
 export const closeIngredientModal = () => (dispatch) => {
   dispatch({

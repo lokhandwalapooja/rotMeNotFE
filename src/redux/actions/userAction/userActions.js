@@ -2,7 +2,8 @@ import { AuthActionTypes } from "./actionType";
 import * as API from "../../../Api/authAPI";
 import store from "../../../redux/store/store";
 import storage from "../../../utility/storage";
-import { routes } from "../../../utility/constants/constants";
+import { routes, TostType } from "../../../utility/constants/constants";
+import { ReactTostify } from "../../../utility/utility";
 
 function getHistory() {
   const storeState = store.getState();
@@ -23,6 +24,7 @@ export const signIn = (credentials) => (dispatch) =>
           storage.set("token", response.data.token);
           storage.set("refresh_token", response.data.refresh_token);
           storage.set("user", response.data.user);
+          ReactTostify("Successfully Logged In", TostType.SUCCESS);
         }
         return response.data;
       })
@@ -45,6 +47,7 @@ dispatch({
           storage.set("token", response.data.token);
           storage.set("refresh_token", response.data.refresh_token);
           storage.set("user", response.data.user);
+          ReactTostify("Successfully Signed Up", TostType.SUCCESS);
         }
         return response.data;
       })

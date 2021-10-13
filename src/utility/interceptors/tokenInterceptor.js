@@ -1,4 +1,6 @@
 import store from '../../redux/store/store';
+import { TostType } from '../constants/constants';
+import { ReactTostify } from '../utility';
 
 const tokenInterceptor = (response) => {
     // authorize only if it's not impersonation
@@ -10,16 +12,17 @@ const tokenInterceptor = (response) => {
     if (response.data.error) {
         if (response.data.error.message !== 'Signature has expired') {
             // Displaying error messaage
-            // toastMsg(response.data.error.message, true, 5000);
+            ReactTostify(response.data.error.message, TostType.ERROR);
         }
     }
 
     if (response.data.code) {
         if (response.data.message !== 'Signature has expired') {
              // Displaying error messaage
-            // toastMsg(response.data.message, true, 5000);
+             ReactTostify(response.data.message, TostType.ERROR);
         }
     }
+    
     return response;
 }
 

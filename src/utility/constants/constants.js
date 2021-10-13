@@ -46,3 +46,10 @@ export const Status = [
   { value: "Pending", label: "Pending" },
   { value: "Rejected", label: "Rejected" },
 ];
+
+export const TostType = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+  WARNING: 'warning',
+  INFO: 'info',
+}
