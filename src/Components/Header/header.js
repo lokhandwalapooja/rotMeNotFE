@@ -45,15 +45,16 @@ const Header = (props) => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="javascript:void(0)" className="nav-link">
-                Add Ingredient
+              <a 
+              href="javascript:void(0)" 
+              className={`nav-link ${
+                history.location.pathname === routes.INGREDIENTS ? `active` : ""
+              }`}
+              onClick={() => history.push(routes.INGREDIENTS)}
+              >
+                Ingredients
               </a>
             </li>
-            {/* <li className="nav-item">
-              <a href="javascript:void(0)" className="nav-link">
-                Submit Recipe
-              </a>
-            </li> */}
             <li className="nav-item">
               <a
                 href="javascript:void(0)"

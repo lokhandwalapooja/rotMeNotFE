@@ -11,10 +11,9 @@ const headers = {
 }
 
 export const login = (credentials) => {
-     
     return axios.post('auth/login', credentials);
 };
 
 export const signUp = (credentials) => {
-    return axios.post('auth/signup', credentials, { headers });
+    return axios.post('auth/signup', credentials);
 };

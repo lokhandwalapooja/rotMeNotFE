@@ -32,6 +32,15 @@ export const authReducer = (state = initialState, action) => {
                 refresh_token: action.payload ? action.payload.refreshToken : null,
             });
 
+        case AuthActionTypes.SIGN_UP_PENDING:
+            return updateObject(state, {isLoginPending: true})
+        case AuthActionTypes.SIGN_UP_FULFILLED:
+            return updateObject(state, {
+                isLoginPending: false,
+                user: action.payload ? action.payload.user : state.user,
+                token: action.payload ? action.payload.token : null,
+                refresh_token: action.payload ? action.payload.refreshToken : null,
+            })    
         default: return state;
     }
 }

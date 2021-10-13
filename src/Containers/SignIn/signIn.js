@@ -67,10 +67,10 @@ const Login = (props) => {
                     <div className="form-group error">
                       <ErrorMessage name="password" className="error" />
                     </div>
-                    <div className="row align-items-center remember">
+                    {/* <div className="row align-items-center remember">
                       <Field name="remember" type="checkbox" />
                       Remember Me
-                    </div>
+                    </div> */}
                     <div className="form-group">
                       <button
                         name="firstName"

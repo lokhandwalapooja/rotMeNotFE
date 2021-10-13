@@ -1,14 +1,27 @@
 import React from "react";
 import { routes } from "../../utility/constants/constants";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { signUpValidation } from "../../utility/validation/validation";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../redux/actions/userAction/userActions";
+import cloneDeep from "clone-deep";
 
 const SingUp = (props) => {
   const { history } = props;
+  const dispatch = useDispatch();
 
   let initialFormValues = {
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
+    email: "",
     password: "",
+    confirm_password: "",
+  };
+
+  const submit = (user) => {
+    const data = cloneDeep(user);
+    delete data.user.confirm_password;
+    dispatch(signUp(data));
   };
 
   return (
@@ -21,8 +34,8 @@ const SingUp = (props) => {
           <Formik
             enableReinitialize={true}
             initialValues={initialFormValues}
-            onSubmit={(values, { resetForm }) => {}}
-            // validationSchema={validateAccountInfoForm}
+            onSubmit={(values) => submit({ user: { ...values } })}
+            validate={(values) => signUpValidation(values)}
           >
             {(formik_props) => {
               const errors = formik_props.errors;
@@ -31,33 +44,41 @@ const SingUp = (props) => {
               return (
                 <div className="card-body">
                   <Form>
-                    <div className="input-group form-group">
+                    <div className="input-group">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
                           <i className="fas fa-user"></i>
                         </span>
                       </div>
                       <Field
-                        name="firstName"
+                        name="first_name"
                         type="text"
                         className="form-control"
                         placeholder="FIRST NAME"
                       />
                     </div>
-                    <div className="input-group form-group">
+                    <div className="form-group error">
+                      <ErrorMessage name="first_name" />
+                    </div>
+
+                    <div className="input-group">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
                           <i className="fas fa-user"></i>
                         </span>
                       </div>
                       <Field
-                        name="lastName"
+                        name="last_name"
                         type="text"
                         className="form-control"
                         placeholder="LAST NAME"
                       />
                     </div>
-                    <div className="input-group form-group">
+                    <div className="form-group error">
+                      <ErrorMessage name="last_name" />
+                    </div>
+
+                    <div className="input-group">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
                           <i className="fas fa-user"></i>
@@ -70,7 +91,11 @@ const SingUp = (props) => {
                         placeholder="EMAIL"
                       />
                     </div>
-                    <div className="input-group form-group">
+                    <div className="form-group error">
+                      <ErrorMessage name="email" />
+                    </div>
+
+                    <div className="input-group">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
                           <i className="fas fa-key"></i>
@@ -83,7 +108,11 @@ const SingUp = (props) => {
                         placeholder="PASSWORD"
                       />
                     </div>
-                    <div className="input-group form-group">
+                    <div className="form-group error">
+                      <ErrorMessage name="password" />
+                    </div>
+
+                    <div className="input-group">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
                           <i className="fas fa-key"></i>
@@ -96,6 +125,10 @@ const SingUp = (props) => {
                         placeholder="CONFIRM PASSWORD"
                       />
                     </div>
+                    <div className="form-group error">
+                      <ErrorMessage name="confirm_password" />
+                    </div>
+
                     <div className="form-group">
                       <button
                         type="submit"

@@ -1,35 +1,75 @@
+import cloneDeep from "clone-deep";
 import React, { useState, useEffect } from "react";
-import Card from "../../Components/Card/card";
-import ReactSelect from "../../Components/Select/ReactSelect";
-import {
-  Cuisine,
-  Ingredients,
-  Status,
-} from "../../utility/constants/constants";
-import RecipeDetails from "../../Components/RecipeDetails/recipeDetails";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getRecipeList,
-  filterRecipeList,
-} from "../../redux/actions/recipeActions/recipeAction";
+  getIngredientsList,
+  // addIngredient,
+} from "../../redux/actions/IngredientsAction/ingredientsAction";
+import IngredientTable from "./ingredientsTable";
 
 const IngredientsContainer = (props) => {
+  
+  const defaultTableData =  {
+    columns: [
+        {
+            label: 'Name',
+            field: 'name',
+            // width: 100,
+            attributes: {
+              'aria-controls': 'DataTable',
+              'aria-label': 'Name',
+            },
+          },
+        {
+        label: 'Updated On',
+        field: 'updatedAt',
+        // width: 100,
+        attributes: {
+          'aria-controls': 'DataTable',
+          'aria-label': 'Updated On',
+        },
+      },{
+        label: 'Action',
+        field: 'action',
+        // width: 100,
+        attributes: {
+          'aria-controls': 'DataTable',
+          'aria-label': 'Action',
+        },
+      }
+    ],
+    rows: [],
+  }
+
   const dispatch = useDispatch();
+  const [data, setData] = useState(defaultTableData);
 
   useEffect(() => {
-    // code to run on component did mount
-    // dispatch(getIngredientList());
-  }, []);
-
-  useEffect(() => {
-    // dispatch(filterRecipeList(recipeSearchObject));
+    dispatch(getIngredientsList());
   }, []);
 
   const isOpenModal = useSelector(
     (state) => state.recipeReducer.openIngredientModal
   );
-  const ingredientList = useSelector((state) => state.recipeReducer.ingredientList);
+  const ingredientsList = useSelector(
+    (state) => state.ingredientsReducer.ingredientsList
+  );
 
+  useEffect(() => {
+    if(ingredientsList) {
+      let updatedIngredients = cloneDeep(data);
+      let ingredientsListWithAction = cloneDeep(ingredientsList);
+      ingredientsListWithAction = ingredientsListWithAction.map(i => {
+        return {
+          name: i.name,
+          updatedAt: i.updatedAt,
+          action: <span><i className="fas fa-edit fa-1x mb-2 clickIcons" onClick={() => alert(`${i._id}`)}/></span>
+        }
+      })
+      updatedIngredients.rows = ingredientsListWithAction;
+    setData(updatedIngredients);
+    }
+  }, [ingredientsList]);
   const filterRecipes = (name, value) => {
     // setRecipeSearchObject((state) => ({
     //   recipeName: name === "recipeName" ? value : state.recipeName,
@@ -56,25 +96,11 @@ const IngredientsContainer = (props) => {
         </div>
       </header>
 
-      {/* SEARCH SECTION */}
-      <div style={{ margin: "10px" }}>
-        <div className="form-inline ml-1  mt-4">
-          <input
-            type="text"
-            name="recipeName"
-            className="form-control mr-3 mt-3"
-            placeholder="Search Recipe"
-            onChange={(e) => filterRecipes(e.target.name, e.target.value)}
-          />
-        </div>
-      </div>
       {/* <!-- BLOG SECTION --> */}
-      <section id="blog" className="py-3 recipes-block">
-        <div className="container recipes_list">
+      <section id="blog" className="py-3 ingredients-block">
+        <div className="container ingredient_list">
           <div className="row">
-            <div className="col">
-              <div className="card-columns"></div>
-            </div>
+            <IngredientTable data={data}/>
           </div>
         </div>
         {/* {isOpenModal ? <RecipeDetails /> : null} */}
