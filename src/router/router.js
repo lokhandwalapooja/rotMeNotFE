@@ -7,6 +7,7 @@ import RecipeContainer from "../Containers/RecipeContainer/recipeContainer";
 import SignIn from "../Containers/SignIn/signIn";
 import SingUp from "../Containers/SignUp/signUp";
 import Oux from "../hoc/Oux/Oux";
+import Ingredients from "../Containers/Ingredients/ingredients";
 
 const Router = (props) => {
   let routeList = null;
@@ -17,6 +18,7 @@ const Router = (props) => {
       <Switch>
         <Route exact path={routes.ROOT} component={Home} />
         <Route exact path={routes.RECIPIES_LIST} component={RecipeContainer}/>
+        <Route exact path={routes.INGREDIENTS} component={Ingredients}/>
         <Route path="*" render={() => <Redirect to={routes.ROOT} />} />
       </Switch>
     );

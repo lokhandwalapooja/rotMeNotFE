@@ -2,10 +2,14 @@ import React from "react";
 import { routes } from "../../utility/constants/constants";
 import "./login.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { signIn } from "../../redux/actions/userAction/userActions";
 import { signInValidation } from "../../utility/validation/validation";
+import { closeRecipeModal } from "../../redux/actions/recipeActions/recipeAction";
+import {useDispatch} from 'react-redux';
 
 const Login = (props) => {
   const { history } = props;
+  const dispatch = useDispatch();
 
   let initialFormValues = {
     email: "",
@@ -22,13 +26,12 @@ const Login = (props) => {
           <Formik
             enableReinitialize={true}
             initialValues={initialFormValues}
-            // onSubmit={(values, { resetForm }) => {}}
-            // validationSchema={signInValidation}
+            onSubmit={(values) => dispatch(signIn({ user: { ...values } }))}
+            // validate={(values) => signInValidation(values)}
           >
             {(formik_props) => {
               const errors = formik_props.errors;
               const touched = formik_props.touched;
-              console.log(errors, "erros");
               return (
                 <div className="card-body">
                   <Form>
@@ -44,7 +47,7 @@ const Login = (props) => {
                         className="form-control"
                         placeholder="EMAIL"
                       />
-                      <ErrorMessage  name="email" />
+                      <ErrorMessage name="email" />
                     </div>
                     <div className="input-group form-group">
                       <div className="input-group-prepend">
@@ -58,7 +61,7 @@ const Login = (props) => {
                         className="form-control"
                         placeholder="PASSWORD"
                       />
-                      <ErrorMessage  name="password" />
+                      <ErrorMessage name="password" />
                     </div>
                     <div className="row align-items-center remember">
                       <Field name="remember" type="checkbox" />

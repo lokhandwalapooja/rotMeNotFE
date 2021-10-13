@@ -200,3 +200,14 @@ body {
     margin-bottom: 1rem;
   }
 }
+
+// INGREDIENTS PAGE
+#ingredient-page-header {
+  height: 200px;
+  background: url('../scssImges/istockphoto-1227198304-1024x1024.jpeg');
+  background-position: 0 -360px;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
