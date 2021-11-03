@@ -1,5 +1,8 @@
 import { RecipeActionTypes, MiscActionTypes } from "./actionType";
 import RecipeListJsonData from "../../../Stubs/RecipeLists.json";
+import * as API from "../../../Api/recipeApi";
+import { closeModel, ReactTostify } from "../../../utility/utility";
+import { Roles, TostType } from "../../../utility/constants/constants";
 // import store from "../../store/store";
 
 // function getHistory() {
@@ -8,16 +11,41 @@ import RecipeListJsonData from "../../../Stubs/RecipeLists.json";
 //   return history;
 // }
 
-export const getRecipeList = () => (dispatch) =>
+export const getRecipeList = () => (dispatch, getState) =>
+ { 
+  const user = getState().authReducer.user;
   dispatch({
     type: RecipeActionTypes.GET_RECIPES_LIST,
-  });
+    payload: user.role === Roles.ADMIN ? API.getAllRecipes()
+    .then(response => {        
+      return response.data.recipes;
+    })
+    .catch(error => {
+      console.log(error);
+    }) : API.getPublishedRecipes()
+      .then(response => {        
+        return response.data.recipes;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  })}
 
+  export const getMyRecipies = () => (dispatch) =>
+   dispatch({
+     type: RecipeActionTypes.GET_MY_RECIPES_LIST,
+     payload: API.getMyRecipes()
+     .then(response => {        
+       return response.data.recipes;
+     })
+     .catch((error) => {
+       console.log(error);
+     })
+    });
+     
 export const getRecipe = (id) => {
   return (dispatch, getState) => {
-    const data = getState().deviceReducer?.recipeList
-      ? getState().deviceReducer?.recipeList
-      : RecipeListJsonData;
+    const data = getState().recipeReducer?.recipeList;
     let index = data.findIndex((f) => f.id === id);
     const equipment = data[index];
 
@@ -27,6 +55,24 @@ export const getRecipe = (id) => {
     });
   };
 };
+
+export const addRecipe = (data) => {
+  return (dispatch, getState) => {
+    const recipeList = getState().recipeReducer?.recipeList;
+    dispatch({
+      type: RecipeActionTypes.ADD_RECIPE,
+      payload: API.addRecipe(data)
+      .then(response => {
+        recipeList.push(response.data.recipe);
+        closeModel();
+        return recipeList
+      })
+      .catch(error => {
+        console.log(error);
+      }),
+    });
+  }
+}
 
 export const openRecipeModal =
   ({ recipe, isRecipeReadOnly }) =>
@@ -41,12 +87,56 @@ export const closeRecipeModal = () => (dispatch) =>
     type: RecipeActionTypes.CLOSE_RECIPE_MODAL,
   });
 
+export const giveRating = (id, value) => (dispatch) => {
+  dispatch({
+    type: RecipeActionTypes.GIVE_RATING,
+    payload: API.giveRating(id, value)
+    .then(response => {
+      ReactTostify(response.data.Message, TostType.SUCCESS);
+      dispatch(getRecipeList())
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  })
+}
+
+export const approveRecipe = (id) => (dispatch) => {
+  dispatch({
+    type: RecipeActionTypes.APPROVE_RECIPE,
+    payload: API.approveRecipe(id)
+    .then(response => {
+      closeModel();
+      ReactTostify(response.data.Message, TostType.SUCCESS);
+      dispatch(getRecipeList())
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  })
+}
+
+export const rejectRecipe = (id) => (dispatch) => {
+  dispatch({
+    type: RecipeActionTypes.REJECT_RECIPE,
+    payload: API.rejectRecipe(id)
+    .then(response => {
+      closeModel();
+      ReactTostify(response.data.Message, TostType.SUCCESS);
+      dispatch(getRecipeList())
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  })
+}
+
 export const filterRecipeList = (recipeObject) => (dispatch, getState) => {
   let FilteredRecipeList = null;
-  let recipeList = RecipeListJsonData;
+  let recipeList = getState().recipeReducer?.recipeList;
   // getState().recipeReducer.recipeList;
   
-  FilteredRecipeList = recipeList.filter((recipe) => {
+  FilteredRecipeList = recipeList?.filter((recipe) => {
     return (
       recipe.recipeName
         .trim()
@@ -71,3 +161,16 @@ export const filterRecipeList = (recipeObject) => (dispatch, getState) => {
     payload: FilteredRecipeList,
   });
 };
+
+export const deleteRecipe = (id) => (dispatch) => {
+  dispatch({
+    type: RecipeActionTypes.DELETE_RECIPE,
+    payload: API.deleteRecipe(id)
+    .then(response => {
+      dispatch(getRecipeList());
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  })
+}

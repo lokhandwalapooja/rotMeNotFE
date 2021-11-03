@@ -6,6 +6,7 @@ export const routes = {
   SIGN_IN: "/sign-in",
   SIGN_UP: "/sign-up",
   INGREDIENTS: "/ingredients",
+  ABOUT: "/about"
 };
 
 export const colourOptions = [
@@ -43,9 +44,9 @@ export const Ingredients = [
 ];
 
 export const Status = [
-  { value: "Approved", label: "Approved" },
-  { value: "Pending", label: "Pending" },
-  { value: "Rejected", label: "Rejected" },
+  { value: "published", label: "Published" },
+  { value: "pending", label: "Pending" },
+  { value: "rejected", label: "Rejected" },
 ];
 
 export const TostType = {
