@@ -26,12 +26,6 @@ const Router = (props) => {
             path={routes.RECIPIES_LIST}
             component={RecipeContainer}
           />
-           <Route
-            exact
-            path={routes.MY_RECIPIES}
-            component={RecipeContainer}
-          />
-          <Route exact path={routes.ABOUT} component={About} />
           <Route path="*" render={() => <Redirect to={routes.ROOT} />} />
         </Switch>
       );
@@ -43,11 +37,6 @@ const Router = (props) => {
           <Route
             exact
             path={routes.RECIPIES_LIST}
-            component={RecipeContainer}
-          />
-           <Route
-            exact
-            path={routes.MY_RECIPIES}
             component={RecipeContainer}
           />
           <Route exact path={routes.INGREDIENTS} component={Ingredients} />

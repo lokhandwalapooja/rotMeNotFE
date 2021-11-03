@@ -12,14 +12,10 @@ const ReactSelect = (props) => {
     readOnly,
     onSelectChange,
     name,
-    setFieldValue
   } = props;
 
   const setValue = (name, value) => {
-    if(onSelectChange) {
-      onSelectChange(name, value);
-    }
-    setFieldValue(name, value);
+    onSelectChange(name, value);
     setSelectedOption(value);
   };
 

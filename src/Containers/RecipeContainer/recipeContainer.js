@@ -4,7 +4,6 @@ import ReactSelect from "../../Components/Select/ReactSelect";
 import {
   Cuisine,
   Ingredients,
-  routes,
   Status,
 } from "../../utility/constants/constants";
 import RecipeDetails from "../../Components/RecipeDetails/recipeDetails";
@@ -12,8 +11,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getRecipeList,
   filterRecipeList,
-  openRecipeModal,
-  getMyRecipies
 } from "../../redux/actions/recipeActions/recipeAction";
 
 const RecipeContainer = (props) => {
@@ -28,12 +25,8 @@ const RecipeContainer = (props) => {
 
   useEffect(() => {
     // code to run on component did mount
-    if(props.history.location.pathname === routes.MY_RECIPIES) {
-      dispatch(getMyRecipies());
-    } else {
     dispatch(getRecipeList());
-    }
-  }, [props.history.location.pathname]);
+  }, []);
 
   useEffect(() => {
     dispatch(filterRecipeList(recipeSearchObject));
@@ -42,10 +35,7 @@ const RecipeContainer = (props) => {
   const isOpenModal = useSelector(
     (state) => state.recipeReducer.openRecipeModal
   );
-  const recipeList = useSelector((state) =>
-    props.history.location.pathname === routes.MY_RECIPIES ? 
-    state.recipeReducer.myRecipeList :
-    state.recipeReducer.recipeList);
+  const recipeList = useSelector((state) => state.recipeReducer.recipeList);
 
   const recipies = () => {
     return recipeList?.map((r) => {
@@ -111,19 +101,6 @@ const RecipeContainer = (props) => {
             placeholder="Search Ingredient"
             onSelectChange={filterRecipes}
           />
-          <button
-            className="clickIcons btn btn-primary"
-            data-toggle="modal"
-            data-target="#recipeModal"
-            data-backdrop="static"
-            data-keyboard="false"
-            onClick={() =>
-              dispatch(openRecipeModal({ recipe: {}, isRecipeReadOnly: false }))
-            }
-            style={{ marginTop: "14px", marginLeft: "10px" }}
-          >
-            Add Recipe
-          </button>
           {/* <button className="btn btn-outline-primary">Search</button> */}
         </div>
       </div>
@@ -131,8 +108,10 @@ const RecipeContainer = (props) => {
       <section id="blog" className="py-3 recipes-block">
         <div className="container recipes_list">
           <div className="row">
-              {recipies()}
+            <div className="col">
+              <div className="card-columns">{recipies()}</div>
             </div>
+          </div>
         </div>
         {isOpenModal ? <RecipeDetails /> : null}
       </section>
