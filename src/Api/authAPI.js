@@ -3,12 +3,12 @@ import axios from '../config';
 // import { values } from 'lodash';
 // const pureAxios = require('axios');
 
-const headers = {
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    },
-}
+// const headers = {
+//     headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json'
+//     },
+// }
 
 export const login = (credentials) => {
     return axios.post('auth/login', credentials);

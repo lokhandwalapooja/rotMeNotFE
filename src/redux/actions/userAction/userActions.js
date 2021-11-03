@@ -22,7 +22,7 @@ export const signIn = (credentials) => (dispatch) =>
           response.data.success === "true"
         ) {
           storage.set("token", response.data.token);
-          storage.set("refresh_token", response.data.refresh_token);
+          storage.set("refresh_token", response.data.refreshToken);
           storage.set("user", response.data.user);
           ReactTostify("Successfully Logged In", TostType.SUCCESS);
         }
@@ -58,7 +58,7 @@ dispatch({
       }),
   });
 
-export const logout = (message) => (dispatch) => {
+export const logout = () => (dispatch) => {
   storage.remove("token");
   storage.remove("user");
   storage.remove("refresh_token");

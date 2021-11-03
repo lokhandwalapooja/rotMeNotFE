@@ -63,7 +63,7 @@ const IngredientsContainer = (props) => {
     if (ingredientsList) {
       let updatedIngredients = cloneDeep(data);
       let ingredientsListWithAction = cloneDeep(ingredientsList);
-      ingredientsListWithAction = ingredientsListWithAction.map((i) => {
+      ingredientsListWithAction = ingredientsListWithAction?.map((i) => {
         return {
           name: i.name,
           updatedAt: moment(i.updatedAt).format("MM/DD/YYYY"),

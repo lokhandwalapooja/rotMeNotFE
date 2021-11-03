@@ -1,11 +1,13 @@
 import React from "react";
-import { routes } from "../../utility/constants/constants";
-import {useDispatch} from 'react-redux';
+import { Roles, routes } from "../../utility/constants/constants";
+import { useDispatch } from "react-redux";
 import { logout } from "../../redux/actions/userAction/userActions";
+import { useSelector } from "react-redux";
 
 const Header = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
+  const role = useSelector((state) => state.authReducer?.user?.role);
 
   return (
     <nav className="navbar navbar-expand-md navbar-light" id="main-nav">
@@ -44,17 +46,21 @@ const Header = (props) => {
                 Home
               </a>
             </li>
-            <li className="nav-item">
-              <a 
-              href="javascript:void(0)" 
-              className={`nav-link ${
-                history.location.pathname === routes.INGREDIENTS ? `active` : ""
-              }`}
-              onClick={() => history.push(routes.INGREDIENTS)}
-              >
-                Ingredients
-              </a>
-            </li>
+            {role === Roles.ADMIN ? (
+              <li className="nav-item">
+                <a
+                  href="javascript:void(0)"
+                  className={`nav-link ${
+                    history.location.pathname === routes.INGREDIENTS
+                      ? `active`
+                      : ""
+                  }`}
+                  onClick={() => history.push(routes.INGREDIENTS)}
+                >
+                  Ingredients
+                </a>
+              </li>
+            ) : null}
             <li className="nav-item">
               <a
                 href="javascript:void(0)"
@@ -69,7 +75,26 @@ const Header = (props) => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="#about" className="nav-link">
+              <a
+                href="javascript:void(0)"
+                onClick={() => history.push(routes.MY_RECIPIES)}
+                className={`nav-link ${
+                  history.location.pathname === routes.MY_RECIPIES
+                    ? `active`
+                    : ""
+                }`}
+              >
+                My Recipes
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                href="javascript:void(0)"
+                onClick={() => history.push(routes.ABOUT)}
+                className={`nav-link ${
+                  history.location.pathname === routes.ABOUT ? `active` : ""
+                }`}
+              >
                 About
               </a>
             </li>

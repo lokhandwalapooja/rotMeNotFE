@@ -45,6 +45,7 @@ export const filterRecipeList = (recipeObject) => (dispatch, getState) => {
   let FilteredRecipeList = null;
   let recipeList = RecipeListJsonData;
   // getState().recipeReducer.recipeList;
+  
   FilteredRecipeList = recipeList.filter((recipe) => {
     return (
       recipe.recipeName
@@ -61,18 +62,10 @@ export const filterRecipeList = (recipeObject) => (dispatch, getState) => {
         .toLowerCase()
         .indexOf(recipeObject.cuisine.toString().trim().toLowerCase()) > -1 &&
       recipe.ingredients.filter((i) =>
-        i.id
-          .toString()
-          .trim()
-          .toLowerCase()
-          .indexOf(
-            recipeObject.ingredients?.map((ing) =>
-              ing.toString().trim().toLowerCase()
-            )
-          ) > -1
-      )
-    );
+            recipeObject.ingredients.indexOf(i.id) > -1
+      )).length === recipeObject.ingredients.length;
   });
+  
   dispatch({
     type: RecipeActionTypes.FILTER_RECIPE_LIST,
     payload: FilteredRecipeList,

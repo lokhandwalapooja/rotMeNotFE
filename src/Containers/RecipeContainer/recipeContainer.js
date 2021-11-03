@@ -49,7 +49,7 @@ const RecipeContainer = (props) => {
       status: name === "status" ? value.value : state.status,
       cuisine: name === "cuisine" ? value.value : state.cuisine,
       ingredients:
-        name === "ingredients" ? value.map((v) => v.value) : state.ingredients,
+        name === "ingredients" ? value?.map((v) => v.value) : state.ingredients,
     }));
   };
 

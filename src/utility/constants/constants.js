@@ -2,9 +2,10 @@ export const routes = {
   ROOT: "/",
   RECIPIES_LIST: "/recipes-list",
   RECIPE: "/recipes-list/recipe",
+  MY_RECIPIES: "/my-recipes",
   SIGN_IN: "/sign-in",
   SIGN_UP: "/sign-up",
-  INGREDIENTS: "/ingredients" 
+  INGREDIENTS: "/ingredients",
 };
 
 export const colourOptions = [
@@ -48,8 +49,13 @@ export const Status = [
 ];
 
 export const TostType = {
-  SUCCESS: 'success',
-  ERROR: 'error',
-  WARNING: 'warning',
-  INFO: 'info',
-}
+  SUCCESS: "success",
+  ERROR: "error",
+  WARNING: "warning",
+  INFO: "info",
+};
+
+export const Roles = {
+  ADMIN: "admin",
+  USER: "user",
+};

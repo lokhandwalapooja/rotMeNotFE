@@ -153,7 +153,7 @@ const RecipeDetails = (props) => {
                             </tr>
                           </thead>
                           <tbody>
-                            {recipeData.ingredients.map((i) => {
+                            {recipeData.ingredients?.map((i) => {
                               return (
                                 <tr>
                                   <td>{i.ingredientName}</td>
