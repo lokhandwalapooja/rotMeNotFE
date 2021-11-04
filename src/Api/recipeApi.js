@@ -16,10 +16,18 @@ export const addRecipe = (data) => {
     return axios.post('recipe/add', data);
 }
 
+export const submitRecipe = (data) => {
+    return axios.post('recipe/submit', data);
+}
+
 export const deleteRecipe = (id) => {
     return axios.post('recipe/delete', {id});
 }
 
 export const giveRating = (id, rating) => {
     return axios.post('recipe/rate', {id, rating})
+}
+
+export const approveRecipe = (id) => {
+    return axios.post('recipe/approve', {id})
 }

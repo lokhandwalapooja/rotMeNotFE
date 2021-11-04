@@ -44,9 +44,9 @@ export const Ingredients = [
 ];
 
 export const Status = [
-  { value: "Approved", label: "Approved" },
-  { value: "Pending", label: "Pending" },
-  { value: "Rejected", label: "Rejected" },
+  { value: "published", label: "Published" },
+  { value: "pending", label: "Pending" },
+  { value: "rejected", label: "Rejected" },
 ];
 
 export const TostType = {

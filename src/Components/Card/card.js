@@ -38,7 +38,7 @@ const Card = (props) => {
             <h4 className="card-title">{recipe.name}</h4>
             <div className="recipe-data">
               <small className="text-muted">{`Recipe by ${
-                recipe.submittedBy
+                recipe.submittedUser
               } on ${moment(recipe.createdAt).format("MM/DD/YYYY")}`}</small>
               <small className="text-muted">{recipe.cuisine?.name}</small>
             </div>

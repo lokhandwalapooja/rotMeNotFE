@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { closeRecipeModal, giveRating } from "../../redux/actions/recipeActions/recipeAction";
+import { approveRecipe, closeRecipeModal, giveRating } from "../../redux/actions/recipeActions/recipeAction";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import { Cuisine, Ingredients, Roles } from "../../utility/constants/constants";
 import ReactSelect from "../../Components/Select/ReactSelect";
@@ -83,7 +83,7 @@ const RecipeDetails = (props) => {
     cost: recipeData?.cost,
     cuisineId: recipeData.cuisine ? setCusineValue(recipeData.cuisine) : "",
     description: recipeData?.description,
-    submittedBy: recipeData?.submittedBy?.name,
+    submittedBy: recipeData?.submittedUser,
     isHealthy: recipeData?.isHealthy,
     timeToPrepare: recipeData?.timeToPrepare,
     ratings: recipeData?.ratings,
@@ -129,17 +129,22 @@ const RecipeDetails = (props) => {
                         style={{ justifyContent: "center" }}
                       >
                         {formik_props.values.img ? (
+                          <>
                           <img
+                          {...getRootProps()}
                             name="img"
-                            src={formik_props.values.img}
+                            src={imageBase64 ? imageBase64 : formik_props.values.img}
                             alt=""
                             className="img-fluid card-img-top"
                             style={{
                               height: "200px",
                               width: "200px",
                               borderRadius: "100px",
+                              cursor: "pointer",
                             }}
                           />
+                          <input {...getInputProps()} />
+                          </>
                         ) : (
                           <div
                             {...getRootProps()}
@@ -398,12 +403,14 @@ const RecipeDetails = (props) => {
                             <button
                               className="btn btn-danger"
                               data-dismiss="modal"
+                              // onClick={() => dispatch(rejectRecipe(recipeData._id))}
                             >
                               Reject
                             </button>
                             <button
                               className="btn btn-success"
                               data-dismiss="modal"
+                              onClick={() => dispatch(approveRecipe(recipeData._id))}
                             >
                               Approve
                             </button>

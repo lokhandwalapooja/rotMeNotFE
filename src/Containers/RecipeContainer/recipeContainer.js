@@ -26,15 +26,6 @@ const RecipeContainer = (props) => {
     ingredients: [],
   });
 
-  // useEffect(() => {
-  //   // code to run on component did mount
-  //   if(props.history.location.pathname === routes.MY_RECIPIES) {
-  //     dispatch(getMyRecipies());
-  //   } else {
-  //   dispatch(getRecipeList());
-  //   }
-  // }, []);
-
   useEffect(() => {
     // code to run on component did mount
     if(props.history.location.pathname === routes.MY_RECIPIES) {

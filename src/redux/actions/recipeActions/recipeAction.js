@@ -101,6 +101,21 @@ export const giveRating = (id, value) => (dispatch) => {
   })
 }
 
+export const approveRecipe = (id) => (dispatch) => {
+  dispatch({
+    type: RecipeActionTypes.APPROVE_RECIPE,
+    payload: API.approveRecipe(id)
+    .then(response => {
+      closeModel();
+      ReactTostify(response.data.Message, TostType.SUCCESS);
+      dispatch(getRecipeList())
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  })
+}
+
 export const filterRecipeList = (recipeObject) => (dispatch, getState) => {
   let FilteredRecipeList = null;
   let recipeList = getState().recipeReducer?.recipeList;
