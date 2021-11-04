@@ -31,3 +31,7 @@ export const giveRating = (id, rating) => {
 export const approveRecipe = (id) => {
     return axios.post('recipe/approve', {id})
 }
+
+export const rejectRecipe = (id) => {
+    return axios.post('recipe/reject', {id})
+}

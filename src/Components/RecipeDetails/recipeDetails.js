@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { approveRecipe, closeRecipeModal, giveRating } from "../../redux/actions/recipeActions/recipeAction";
+import { approveRecipe, closeRecipeModal, giveRating, rejectRecipe } from "../../redux/actions/recipeActions/recipeAction";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import { Cuisine, Ingredients, Roles } from "../../utility/constants/constants";
 import ReactSelect from "../../Components/Select/ReactSelect";
@@ -403,7 +403,7 @@ const RecipeDetails = (props) => {
                             <button
                               className="btn btn-danger"
                               data-dismiss="modal"
-                              // onClick={() => dispatch(rejectRecipe(recipeData._id))}
+                              onClick={() => dispatch(rejectRecipe(recipeData._id))}
                             >
                               Reject
                             </button>

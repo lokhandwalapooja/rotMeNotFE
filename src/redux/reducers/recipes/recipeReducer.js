@@ -35,6 +35,11 @@ export const recipeReducer = (state = initialState, action) => {
         case RecipeActionTypes.APPROVE_RECIPE_FULFILLED:
            updateObject(state, {isLoading: false})  
         
+           case RecipeActionTypes.REJECT_RECIPE_PENDING:
+            return updateObject(state, {isLoading: true})
+          case RecipeActionTypes.REJECT_RECIPE_FULFILLED:
+             updateObject(state, {isLoading: false})  
+
     case RecipeActionTypes.GET_RECIPE:
       return updateObject(state, { recipe: action.payload });
 

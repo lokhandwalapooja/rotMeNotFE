@@ -15,7 +15,7 @@ const Card = (props) => {
   const role = useSelector((state) => state.authReducer?.user?.role);
 
   const { recipe } = props;
-  debugger;
+
   return (
     <>
       <div className="card" style={{ margin: 15 }}>
