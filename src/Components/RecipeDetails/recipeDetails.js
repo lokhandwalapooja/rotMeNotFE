@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { closeRecipeModal } from "../../redux/actions/recipeActions/recipeAction";
-import { Formik, Form, Field, ErrorMessage , FieldArray} from "formik";
-import { Cuisine, Ingredients } from "../../utility/constants/constants";
+import { closeRecipeModal, giveRating } from "../../redux/actions/recipeActions/recipeAction";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+import { Cuisine, Ingredients, Roles } from "../../utility/constants/constants";
 import ReactSelect from "../../Components/Select/ReactSelect";
 import Rating from "../Rating/rating";
 import { Editor } from "react-draft-wysiwyg";
@@ -11,13 +11,9 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDropzone } from "react-dropzone";
 import { toBase64 } from "../../utility/utility";
 import cloneDeep from "clone-deep";
-import {
-  getIngredientsList
-} from "../../redux/actions/IngredientsAction/ingredientsAction";
-import {
-  addRecipe
-} from "../../redux/actions/recipeActions/recipeAction";
-import draftToHtml from 'draftjs-to-html';
+import { getIngredientsList } from "../../redux/actions/IngredientsAction/ingredientsAction";
+import { addRecipe } from "../../redux/actions/recipeActions/recipeAction";
+import draftToHtml from "draftjs-to-html";
 
 const RecipeDetails = (props) => {
   const recipeData = useSelector((state) => state.recipeReducer.recipe);
@@ -25,6 +21,8 @@ const RecipeDetails = (props) => {
     (state) => state.recipeReducer.isRecipeReadOnly
   );
   const [imageBase64, setImageBase64] = useState(null);
+
+  const role = useSelector((state) => state.authReducer?.user?.role);
 
   const onDrop = useCallback(async (acceptedFiles) => {
     // Do something with the files
@@ -50,10 +48,12 @@ const RecipeDetails = (props) => {
     dispatch(getIngredientsList());
   }, []);
 
-  const IngredientsOptions = useSelector(
-    (state) => state.ingredientsReducer.ingredientsList?.map(i => { return {value: i._id, label: i.name}})
+  const IngredientsOptions = useSelector((state) =>
+    state.ingredientsReducer.ingredientsList?.map((i) => {
+      return { value: i._id, label: i.name };
+    })
   );
-  
+
   const setCusineValue = (cuisine) => {
     return {
       value: cuisine.id,
@@ -62,19 +62,19 @@ const RecipeDetails = (props) => {
   };
 
   const removeIngredient = (formik_props, i) => {
-
-    let ingredients = cloneDeep(formik_props.values.ingredients)
+    let ingredients = cloneDeep(formik_props.values.ingredients);
     ingredients.splice(i, 1);
     formik_props.setFieldValue("ingredients", ingredients);
-  }
+  };
 
   const submitRecipe = (values) => {
     const data = cloneDeep(values);
     data.cuisineId = data.cuisineId.value?.toString();
-    data.ingredients = data.ingredients.map(i => {return {  ingredient: i.ingredient.value, quantity: i.quantity}})
-    // delete data.img;
+    data.ingredients = data.ingredients.map((i) => {
+      return { ingredient: i.ingredient.value, quantity: i.quantity };
+    });
     dispatch(addRecipe(data));
-  }
+  };
 
   let initialFormValues = {
     img: recipeData.img ? recipeData.img : imageBase64,
@@ -87,7 +87,10 @@ const RecipeDetails = (props) => {
     isHealthy: recipeData?.isHealthy,
     timeToPrepare: recipeData?.timeToPrepare,
     ratings: recipeData?.ratings,
-    ingredients: [{ingredient: '', quantity: ''}, {ingredient: '', quantity: ''}],
+    ingredients: [
+      { ingredient: "", quantity: "" },
+      { ingredient: "", quantity: "" },
+    ],
   };
 
   return (
@@ -108,7 +111,7 @@ const RecipeDetails = (props) => {
             enableReinitialize={true}
             initialValues={initialFormValues}
             onSubmit={(values) => {
-              submitRecipe(values)
+              submitRecipe(values);
             }}
             // validationSchema={validateAccountInfoForm}
           >
@@ -218,8 +221,16 @@ const RecipeDetails = (props) => {
                         <div className="card-body">
                           <div id="table" className="table-editable">
                             <span className="table-add float-right mb-3 mr-2">
-                              <a href="#!" className="text-success" onClick={() =>
-                                 formik_props.setFieldValue("ingredients",[...formik_props.values.ingredients, {ingredient: '', quantity: ''}])}>
+                              <a
+                                href="#!"
+                                className="text-success"
+                                onClick={() =>
+                                  formik_props.setFieldValue("ingredients", [
+                                    ...formik_props.values.ingredients,
+                                    { ingredient: "", quantity: "" },
+                                  ])
+                                }
+                              >
                                 <i
                                   className="fas fa-plus fa-2x"
                                   aria-hidden="true"
@@ -237,57 +248,67 @@ const RecipeDetails = (props) => {
                               <tbody>
                                 <FieldArray name="ingredients">
                                   {() =>
-                                    formik_props.values.ingredients?.map((ingredient, i) => {
-                                      // const ticketErrors =
-                                      //   (errors.ingredients?.length &&
-                                      //     errors.tickets[i]) ||
-                                      //   {};
-                                      // const ticketTouched =
-                                      //   (touched.ingredients?.length &&
-                                      //     touched.tickets[i]) ||
-                                      //   {};
-                                      return (
-                                        <tr>
-                                          <td
-                                            className="pt-3-half"
-                                            contenteditable="true"
-                                          >
-                                            <ReactSelect
-                                              options={IngredientsOptions}
-                                              name={`ingredients.${i}.ingredient`}
-                                              setFieldValue={formik_props.setFieldValue}
-                                              value={ingredient.ingredient}
-                                              className="filters"
-                                              placeholder="Ingredient"
-                                              // readOnly={isRecipeReadOnly}
-                                            />
-                                          </td>
-                                          <td
-                                            className="pt-3-half"
-                                            contenteditable="true"
-                                          >
-                                            <Field
-                                              name={`ingredients.${i}.quantity`}
-                                              className="form-control"
-                                              type="text"
-                                              id="calories"
-                                              placeholder="Quantity"
-                                            />
-                                          </td>
-                                          <td>
-                                            <span className="table-remove">
-                                              <button
-                                                type="button"
-                                                className="btn btn-danger btn-rounded btn-sm my-0"
-                                                onClick={() => removeIngredient(formik_props, i)}
-                                              >
-                                                Remove
-                                              </button>
-                                            </span>
-                                          </td>
-                                        </tr>
-                                      );
-                                    })
+                                    formik_props.values.ingredients?.map(
+                                      (ingredient, i) => {
+                                        // const ticketErrors =
+                                        //   (errors.ingredients?.length &&
+                                        //     errors.tickets[i]) ||
+                                        //   {};
+                                        // const ticketTouched =
+                                        //   (touched.ingredients?.length &&
+                                        //     touched.tickets[i]) ||
+                                        //   {};
+                                        return (
+                                          <tr>
+                                            <td
+                                              className="pt-3-half"
+                                              contenteditable="true"
+                                            >
+                                              <ReactSelect
+                                                options={IngredientsOptions}
+                                                name={`ingredients.${i}.ingredient`}
+                                                setFieldValue={
+                                                  formik_props.setFieldValue
+                                                }
+                                                value={ingredient.ingredient}
+                                                className="filters"
+                                                placeholder="Ingredient"
+                                                readOnly={isRecipeReadOnly}
+                                              />
+                                            </td>
+                                            <td
+                                              className="pt-3-half"
+                                              contenteditable="true"
+                                            >
+                                              <Field
+                                                name={`ingredients.${i}.quantity`}
+                                                className="form-control"
+                                                type="text"
+                                                id="calories"
+                                                placeholder="Quantity"
+                                                readOnly={isRecipeReadOnly}
+                                              />
+                                            </td>
+                                            <td>
+                                              <span className="table-remove">
+                                                <button
+                                                  type="button"
+                                                  className="btn btn-danger btn-rounded btn-sm my-0"
+                                                  onClick={() =>
+                                                    removeIngredient(
+                                                      formik_props,
+                                                      i
+                                                    )
+                                                  }
+                                                >
+                                                  Remove
+                                                </button>
+                                              </span>
+                                            </td>
+                                          </tr>
+                                        );
+                                      }
+                                    )
                                   }
                                 </FieldArray>
                               </tbody>
@@ -332,23 +353,25 @@ const RecipeDetails = (props) => {
                             </label>
                           </div>
                         </div>
-                        <div className="col">
-                          <label for="ratings"></label>
-                          <div className="form-check">
-                            <label
-                              className="form-check-label mr-2"
-                              style={{ marginLeft: "170px" }}
-                            >
-                              <Rating
-                                readOnly={isRecipeReadOnly}
-                                name="rating"
-                                value={formik_props.values.ratings}
-                                className="form-check-input"
-                              />{" "}
-                              <span className="ratings">Rating</span>
-                            </label>
+                        {isRecipeReadOnly ? (
+                          <div className="col">
+                            <label for="ratings"></label>
+                            <div className="form-check">
+                              <label
+                                className="form-check-label mr-2"
+                                style={{ marginLeft: "170px" }}
+                              >
+                                <Rating
+                                  name="rating"
+                                  value={formik_props.values.ratings}
+                                  className="form-check-input"
+                                  onRatingChange={() => dispatch(giveRating(recipeData._id, formik_props.values.ratings))}
+                                />{" "}
+                                <span className="ratings">Rating</span>
+                              </label>
+                            </div>
                           </div>
-                        </div>
+                        ) : null}
                       </div>
                       <div className="form-row form-control mt-4">
                         <div className="col">
@@ -365,20 +388,40 @@ const RecipeDetails = (props) => {
                         </div>
                       </div>
                       <div className="modal-footer">
-                        {/* FOR USER LOGIN */}
                         {/* <button className="btn btn-primary" data-dismiss="modal">
                       Close
                     </button> */}
-                        <button type="submit" className="btn btn-primary">
-                          Submit
-                        </button>
+
                         {/* FOR ADMIN LOGIN */}
-                        {/* <button className="btn btn-danger" data-dismiss="modal">
-                      Reject
-                    </button>
-                    <button className="btn btn-success" data-dismiss="modal">
-                      Approve
-                    </button> */}
+                        {role === Roles.ADMIN && isRecipeReadOnly ? (
+                          <>
+                            <button
+                              className="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Reject
+                            </button>
+                            <button
+                              className="btn btn-success"
+                              data-dismiss="modal"
+                            >
+                              Approve
+                            </button>
+                          </>
+                        ) : !isRecipeReadOnly ? (
+                          <button type="submit" className="btn btn-primary">
+                            Submit
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            data-dismiss="modal"
+                            onClick={() => dispatch(closeRecipeModal())}
+                          >
+                            Close
+                          </button>
+                        )}
                       </div>
                     </Form>
                   </div>

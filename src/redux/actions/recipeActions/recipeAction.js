@@ -1,8 +1,8 @@
 import { RecipeActionTypes, MiscActionTypes } from "./actionType";
 import RecipeListJsonData from "../../../Stubs/RecipeLists.json";
 import * as API from "../../../Api/recipeApi";
-import { closeModel } from "../../../utility/utility";
-import { Roles } from "../../../utility/constants/constants";
+import { closeModel, ReactTostify } from "../../../utility/utility";
+import { Roles, TostType } from "../../../utility/constants/constants";
 // import store from "../../store/store";
 
 // function getHistory() {
@@ -86,6 +86,20 @@ export const closeRecipeModal = () => (dispatch) =>
   dispatch({
     type: RecipeActionTypes.CLOSE_RECIPE_MODAL,
   });
+
+export const giveRating = (id, value) => (dispatch) => {
+  dispatch({
+    type: RecipeActionTypes.GIVE_RATING,
+    payload: API.giveRating(id, value)
+    .then(response => {
+      ReactTostify(response.data.Message, TostType.SUCCESS);
+      dispatch(getRecipeList())
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  })
+}
 
 export const filterRecipeList = (recipeObject) => (dispatch, getState) => {
   let FilteredRecipeList = null;

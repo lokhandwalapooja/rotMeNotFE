@@ -19,3 +19,7 @@ export const addRecipe = (data) => {
 export const deleteRecipe = (id) => {
     return axios.post('recipe/delete', {id});
 }
+
+export const giveRating = (id, rating) => {
+    return axios.post('recipe/rate', {id, rating})
+}
