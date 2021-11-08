@@ -3,9 +3,11 @@ import { Rating } from '@mui/material';
 
 const Ratings = (props) => {
     const [ratingValue, setRatingValue] = useState(props.value);
-
-    const {className, value, name, onRatingChange} = props;
-
+    const {className, value, name, submitRating} = props;
+    const onRatingChange = (newValue) => {
+      setRatingValue(newValue);
+      submitRating(newValue);
+    }
   if (props.readOnly) {
     return <Rating name={name} value={value} size={"small"} readOnly />;
   } else {
@@ -16,9 +18,7 @@ const Ratings = (props) => {
         value={ratingValue}
         className={className}
         onChange={(event, newValue) => {
-            setRatingValue(newValue);
-            onRatingChange();
-        }}
+          onRatingChange(newValue)}}
       />
     );
   }

@@ -18,7 +18,7 @@ const Card = (props) => {
 
   return (
     <>
-      <div className="card" style={{ margin: 15 }}>
+      <div className="card" style={{ margin: 15}}>
         <div
           className="cardData"
           data-toggle="modal"
@@ -32,7 +32,7 @@ const Card = (props) => {
           <img
             src={recipe.img}
             alt=""
-            className="img-fluid card-img-top recipeCardImage"
+            className="img-fluid recipeCardImg card-img-top recipeCardImage"
           />
           <div className="card-body">
             <h4 className="card-title">{recipe.name}</h4>

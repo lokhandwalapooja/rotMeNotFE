@@ -10,6 +10,8 @@ import {
 import IngredientTable from "../../Components/Table/MUITable";
 import AddOrUpdateIngredient from "./addOrUpdateIngredient";
 import moment from 'moment';
+import ClipLoader from "react-spinners/ClipLoader";
+import { primaryColor } from "../../utility/constants/constants";
 
 const IngredientsContainer = (props) => {
   const defaultTableData = {
@@ -58,6 +60,7 @@ const IngredientsContainer = (props) => {
   const ingredientsList = useSelector(
     (state) => state.ingredientsReducer.ingredientsList
   );
+  const isLoading = useSelector((state) => state.ingredientsReducer.isLoading);
 
   useEffect(() => {
     if (ingredientsList) {
@@ -106,7 +109,11 @@ const IngredientsContainer = (props) => {
       <section id="blog" className="py-3 ingredients-block">
         <div className="container ingredient_list">
           {/* <button className="btn btn-primary" style={{float: 'right'}}>{"Add"}</button> */}
-          <div className="row">
+          <div className="row" style={isLoading ? {display: 'flex', justifyContent: 'space-around'} : null}>
+           {isLoading ? 
+            <div>
+            <ClipLoader color={primaryColor} loading={isLoading} size={150} />
+            </div> :
             <IngredientTable
               data={data}
               title={"INGREDIENTS"}
@@ -114,6 +121,7 @@ const IngredientsContainer = (props) => {
               addClicked={() => dispatch(addIngredientClicked())}
               dataTarget="#ingredientModal"
             />
+           }
           </div>
         </div>
         {isOpenModal ? <AddOrUpdateIngredient /> : null}

@@ -43,11 +43,17 @@ export const Ingredients = [
   { value: 10, label: "ata" },
 ];
 
-export const Status = [
+export const StatusOptions = [
   { value: "published", label: "Published" },
   { value: "pending", label: "Pending" },
   { value: "rejected", label: "Rejected" },
 ];
+
+export const RecipeStatus = {
+  PUBLISHED: "published",
+  PENDING: "pending",
+  REJECTED: "rejected",
+}
 
 export const TostType = {
   SUCCESS: "success",
@@ -60,3 +66,5 @@ export const Roles = {
   ADMIN: "admin",
   USER: "user",
 };
+
+export const primaryColor = '#3292a6';

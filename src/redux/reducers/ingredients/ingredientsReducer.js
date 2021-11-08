@@ -6,6 +6,7 @@ export const initialState = {
   ingredient: null,
   openIngredientModal: false,
   isIngredientLoading: false,
+  isLoading: false
 };
 
 const updateObject = (oldState, updatedProps) => {

@@ -19,7 +19,9 @@ const ReactSelect = (props) => {
     if(onSelectChange) {
       onSelectChange(name, value);
     }
-    setFieldValue(name, value);
+    if(setFieldValue) {
+      setFieldValue(name, value);
+    }
     setSelectedOption(value);
   };
 

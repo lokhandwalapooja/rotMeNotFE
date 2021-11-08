@@ -7,11 +7,12 @@ const About = (props) => {
         <div class="container">
           <div class="row">
             <div class="col-md-6 m-auto text-center">
-              <h1>About Us</h1>
-              <p>
+              <h1>TEAM 5</h1>
+              <h3>Story behind our website</h3>
+              {/* <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas,
                 temporibus?
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
@@ -22,27 +23,18 @@ const About = (props) => {
             <div class="col-md-6">
               <h1 className="text-primary">What We Do</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
-                fuga eaque. Amet, assumenda aliquid tempore dolorum error
-                eveniet doloribus sed repellat quod, dolores fuga ipsam soluta.
-                Aliquam accusantium pariatur aut sint deleniti laborum ducimus
-                voluptatem? Architecto cumque quod suscipit officiis soluta,
-                voluptate dicta blanditiis similique praesentium temporibus
-                adipisci debitis labore!
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
-                fuga eaque. Amet, assumenda aliquid tempore dolorum error
-                eveniet doloribus sed repellat quod, dolores fuga ipsam soluta.
-                Aliquam accusantium pariatur aut sint deleniti laborum ducimus
-                voluptatem? Architecto cumque quod suscipit officiis soluta,
-                voluptate dicta blanditiis similique praesentium temporibus
-                adipisci debitis labore!
+                This is the essence of the RMN; it is their main marketing point. 
+                A user who accesses the website at any point of time (logged in) has the option to
+                 add into a virtual basket all the ingredients they have at home.
+                  The website then scours its recipe database to find a recipe that could be cooked 
+                  using those ingredients and presents it to the user. If there are multiple recipes matching the
+                   users’ ingredients, they have the option to choose what they want to cook.
+                Not only can these novice users view recipes. They also can submit the recipes and earn points.
               </p>
             </div>
             <div class="col-md-6">
               <img
-                src="https://source.unsplash.com/random/700x700/?technology"
+                src="img/johnathan-macedo-4NQEvxW2_4w-unsplash.jpeg"
                 alt=""
                 class="img-fluid rounded-circle d-none d-md-block about-img"
               />
@@ -55,10 +47,10 @@ const About = (props) => {
             <div class="col">
               <div class="info-header mb-5">
                 <h1 class="text-primary pb-3">Meet The Authors</h1>
-                <p class="lead">
+                {/* <p class="lead">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
                   laborum numquam aperiam dolores a porro!
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
@@ -68,11 +60,11 @@ const About = (props) => {
               <div class="card">
                 <div class="card-body">
                   <img
-                    src="img/person1.jpg"
+                    src="img/pooja.jpeg"
                     alt=""
                     class="img-fluid rounded-circle w-50 mb-3"
                   />
-                  <h3>Susan Williams</h3>
+                  <h3>Pooja</h3>
                   <h5 class="text-muted">Lead Writer</h5>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -103,11 +95,11 @@ const About = (props) => {
               <div class="card">
                 <div class="card-body">
                   <img
-                    src="img/person2.jpg"
+                    src="img/manisha.jpeg"
                     alt=""
                     class="img-fluid rounded-circle w-50 mb-3"
                   />
-                  <h3>Grace Smith</h3>
+                  <h3>Manisha</h3>
                   <h5 class="text-muted">Co-Writer</h5>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -138,11 +130,11 @@ const About = (props) => {
               <div class="card">
                 <div class="card-body">
                   <img
-                    src="img/person3.jpg"
+                    src="img/prashanth.jpeg"
                     alt=""
                     class="img-fluid rounded-circle w-50 mb-3"
                   />
-                  <h3>John Doe</h3>
+                  <h3>Prashant</h3>
                   <h5 class="text-muted">Editor</h5>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -173,11 +165,11 @@ const About = (props) => {
               <div class="card">
                 <div class="card-body">
                   <img
-                    src="img/person4.jpg"
+                    src="img/lin.jpeg"
                     alt=""
                     class="img-fluid rounded-circle w-50 mb-3"
                   />
-                  <h3>Kevin Swanson</h3>
+                  <h3>Lin</h3>
                   <h5 class="text-muted">Designer</h5>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
