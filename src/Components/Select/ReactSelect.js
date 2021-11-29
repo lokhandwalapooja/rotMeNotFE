@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 const ReactSelect = (props) => {
-  
   const {
     className,
     options,
@@ -11,15 +10,19 @@ const ReactSelect = (props) => {
     readOnly,
     name,
     value,
-    setFieldValue
+    setFieldValue,
+    onSelectChange,
   } = props;
 
   const setValue = (name, value) => {
-    if(setFieldValue) {
+    if (setFieldValue) {
       setFieldValue(name, value);
     }
+    if (onSelectChange) {
+      onSelectChange(name, value);
+    }
   };
-  
+
   return (
     <Select
       value={value}
