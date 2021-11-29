@@ -7,7 +7,7 @@ import {
 } from "../../redux/actions/recipeActions/recipeAction";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import { Roles } from "../../utility/constants/constants";
+import { Roles, RecipeStatus} from "../../utility/constants/constants";
 
 const Card = (props) => {
   const dispatch = useDispatch();
@@ -57,6 +57,11 @@ const Card = (props) => {
                   Healthy
                 </small>
               ) : null}
+            </div>
+            <div className="recipe-data mt-2">
+            <small className={`font-weight-bold ${recipe.status === RecipeStatus.PENDING ? "text-pending" :
+          recipe.status === RecipeStatus.REJECTED ? "text-rejected" : 
+          recipe.status === RecipeStatus.PUBLISHED ? "text-approved" : "" }`}>{`${recipe.status}`}</small>
             </div>
           </div>
         </div>

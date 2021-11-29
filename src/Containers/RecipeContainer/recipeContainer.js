@@ -107,7 +107,7 @@ border-color: red;
  
   return (
     <>
-      <header id="page-header">
+      {/* <header id="page-header">
         <div className="container">
           <div className="row">
             <div className="col-md-6 m-auto text-center">
@@ -115,14 +115,10 @@ border-color: red;
                 props.history.location.pathname === routes.MY_RECIPIES ?
                 <h1>Are you an amature cook looking to share your recipes with the world?</h1> :
               <h1>ROT-ME-NOT has hand-picked expert chef for guidence who strive to share their knowledge.</h1> }
-              {/* <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas,
-                temporibus?
-              </p> */}
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* SEARCH SECTION */}
       {props.history.location.pathname !== routes.MY_RECIPIES  ? 
