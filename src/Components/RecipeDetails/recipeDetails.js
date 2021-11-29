@@ -20,13 +20,7 @@ import {
 import ReactSelect from "../../Components/Select/ReactSelect";
 import Rating from "../Rating/rating";
 import { Editor } from "react-draft-wysiwyg";
-import {
-  EditorState,
-  ContentState,
-  convertFromHTML,
-  convertToRaw,
-  CompositeDecorator,
-} from "draft-js";
+import { EditorState, ContentState, convertFromHTML, convertToRaw, CompositeDecorator } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDropzone } from "react-dropzone";
 import { toBase64 } from "../../utility/utility";
@@ -59,18 +53,26 @@ const RecipeDetails = (props) => {
   const dispatch = useDispatch();
 
   const Link = (props) => {
-    const { url } = props.contentState.getEntity(props.entityKey).getData();
-    return <a href={url}>{props.children}</a>;
+    const {url} = props.contentState.getEntity(props.entityKey).getData();
+    return (
+      <a href={url}>
+        {props.children}
+      </a>
+    );
   };
 
   const Image = (props) => {
-    const { height, src, width } = props.contentState
-      .getEntity(props.entityKey)
-      .getData();
+    const {
+      height,
+      src,
+      width,
+    } = props.contentState.getEntity(props.entityKey).getData();
 
-    return <img src={src} height={height} width={width} />;
+    return (
+      <img src={src} height={height} width={width} />
+    );
   };
-
+  
   const decorator = new CompositeDecorator([
     {
       strategy: findLinkEntities,
@@ -83,35 +85,42 @@ const RecipeDetails = (props) => {
   ]);
 
   function findLinkEntities(contentBlock, callback, contentState) {
-    contentBlock.findEntityRanges((character) => {
-      const entityKey = character.getEntity();
-      return (
-        entityKey !== null &&
-        contentState.getEntity(entityKey).getType() === "LINK"
-      );
-    }, callback);
+    contentBlock.findEntityRanges(
+      (character) => {
+        const entityKey = character.getEntity();
+        return (
+          entityKey !== null &&
+          contentState.getEntity(entityKey).getType() === 'LINK'
+        );
+      },
+      callback
+    );
   }
 
   function findImageEntities(contentBlock, callback, contentState) {
-    contentBlock.findEntityRanges((character) => {
-      const entityKey = character.getEntity();
-      return (
-        entityKey !== null &&
-        contentState.getEntity(entityKey).getType() === "IMAGE"
-      );
-    }, callback);
+    contentBlock.findEntityRanges(
+      (character) => {
+        const entityKey = character.getEntity();
+        return (
+          entityKey !== null &&
+          contentState.getEntity(entityKey).getType() === 'IMAGE'
+        );
+      },
+      callback
+    );
   }
 
   const [editorState, setEditorState] = useState(() =>
-    recipeData.description
-      ? EditorState.createWithContent(
-          ContentState.createFromBlockArray(
-            convertFromHTML(recipeData.description).contentBlocks,
-            convertFromHTML(recipeData.description).entityMap
-          ),
-          decorator
-        )
-      : EditorState.createWithContent(ContentState.createFromText(""))
+  recipeData.description ?
+  EditorState.createWithContent(
+  ContentState.createFromBlockArray(
+    convertFromHTML(recipeData.description).contentBlocks,
+    convertFromHTML(recipeData.description).entityMap
+  ), decorator)
+  :
+    EditorState.createWithContent(
+      ContentState.createFromText("")
+    )
   );
 
   const {
@@ -125,6 +134,7 @@ const RecipeDetails = (props) => {
   const setDiscription = (setFieldValue) => {
     setFieldValue("description", stateToHTML(editorState.getCurrentContent()));
     console.log(stateToHTML(editorState.getCurrentContent()));
+     
   };
 
   useEffect(() => {
@@ -201,7 +211,6 @@ const RecipeDetails = (props) => {
     isHealthy: recipeData?.isHealthy,
     timeToPrepare: recipeData?.timeToPrepare,
     ratings: recipeData?.ratings,
-    video: recipeData?.video,
     ingredients:
       recipeData?.ingredients?.length > 0
         ? setIngredients(recipeData?.ingredients)
@@ -210,7 +219,7 @@ const RecipeDetails = (props) => {
             { ingredient: "", quantity: "" },
           ],
   };
-
+ 
   return (
     <div className="modal recipeDetails" id="recipeModal">
       <div className="modal-dialog mw-100 w-50">
@@ -219,20 +228,9 @@ const RecipeDetails = (props) => {
             <h5 className="modal-title">
               {recipeData?._id ? "Update Recipe" : "Recipe Details"}
             </h5>
-            <span
-              style={{ marginTop: "2px" }}
-              className={`font-weight-bold ${
-                recipeData.status === RecipeStatus.PENDING
-                  ? "text-pending"
-                  : recipeData.status === RecipeStatus.REJECTED
-                  ? "text-rejected"
-                  : recipeData.status === RecipeStatus.PUBLISHED
-                  ? "text-approved"
-                  : ""
-              }`}
-            >
-              {recipeData.status ? `(${recipeData.status})` : ""}
-            </span>
+            <span style={{marginTop: "2px"}} className={`font-weight-bold ${recipeData.status === RecipeStatus.PENDING ? "text-pending" :
+          recipeData.status === RecipeStatus.REJECTED ? "text-rejected" : 
+          recipeData.status === RecipeStatus.PUBLISHED ? "text-approved" : "" }`}>{recipeData.status ? `(${recipeData.status})`: ""}</span>
             <button
               className="close"
               data-dismiss="modal"
@@ -390,9 +388,8 @@ const RecipeDetails = (props) => {
                           </div>
                         </div>
                       </div>
-
                       {/* <!-- Editable table --> */}
-                      <div className="card" style={{ marginTop: "20px", marginBottom: "10px" }}>
+                      <div className="card" style={{ marginTop: "20px" }}>
                         <div className="card-body">
                           <div id="table" className="table-editable">
                             <span className="table-add float-right mb-3 mr-2">
@@ -564,28 +561,6 @@ const RecipeDetails = (props) => {
                           </tbody>
                         </table>
                       </div> */}
-                           <div className="form-row">
-                        <div className="col">
-                          {isRecipeReadOnly ? (
-                            <a href={formik_props.values.video} target="_blank">
-                              {formik_props.values.video ? "Click here to view the video" : "No video Added"}</a>
-                          ) : (
-                            <>
-                            <label for="video">Video</label>
-                              <Field
-                                name="video"
-                                className="form-control"
-                                type="text"
-                                id="video"
-                              />
-                              <div className="form-group error">
-                                <ErrorMessage name="video" />
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-
                       <div className="form-row ">
                         <div className="col">
                           <label for="isHealthy"></label>
@@ -618,14 +593,13 @@ const RecipeDetails = (props) => {
                                   className="form-check-input"
                                   setFormikRating={formik_props.setFieldValue}
                                   submitRating={(value) =>
-                                    dispatch(
+                                      dispatch(
                                       giveRating(
                                         recipeData._id,
                                         value,
                                         props.currentState
                                       )
-                                    )
-                                  }
+                                    )}
                                 />{" "}
                                 <span className="ratings">Rating</span>
                               </label>
@@ -633,7 +607,6 @@ const RecipeDetails = (props) => {
                           </div>
                         ) : null}
                       </div>
-                      
                       <div className="form-row form-control mt-4">
                         <div className="col">
                           <h6>

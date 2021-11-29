@@ -73,7 +73,6 @@ export const addRecipe = (data) => {
       payload: API.addRecipe(data)
         .then((response) => {
           recipeList.push(response.data.recipe);
-          ReactTostify(response.data.Message, TostType.SUCCESS);
           closeModel();
           return recipeList;
         })
@@ -113,7 +112,6 @@ export const editRecipe = (data) => {
           );
           recipeList[index] = response.data.recipe;
           closeModel();
-          ReactTostify(response.data.Message, TostType.SUCCESS);
           return recipeList;
         })
         .catch((error) => {
@@ -224,7 +222,6 @@ export const deleteRecipe = (id) => (dispatch) => {
     type: RecipeActionTypes.DELETE_RECIPE,
     payload: API.deleteRecipe(id)
       .then((response) => {
-        ReactTostify(response.data.Message, TostType.SUCCESS);
         dispatch(getRecipeList());
       })
       .catch((error) => {
