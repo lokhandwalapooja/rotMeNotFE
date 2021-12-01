@@ -142,6 +142,7 @@ border-color: red;
             onSelectChange={(name, value) => 
               {
               setCurrentState(value.value);
+              setDefaultStatus(value);
               dispatch(getFilteredRecipe(value.value))}}
           /> : null }
           <ReactSelect

@@ -51,10 +51,10 @@ const About = (props) => {
             <div class="col">
               <div class="info-header mb-5">
                 <h1 class="text-primary pb-3">Why Rot-Me-Not?</h1>
-                <p class="lead pb-3">
+                {/* <p class="lead pb-3">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Possimus obcaecati alias rerum dolore fugiat debitis?
-                </p>
+                </p> */}
               </div>
 
              
@@ -74,13 +74,7 @@ const About = (props) => {
 
                   <div id="collapse1" class="collapse show">
                     <div class="card-body">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Impedit odit laborum qui, debitis, sequi dolores nobis
-                      mollitia labore quasi earum laboriosam nihil cupiditate
-                      magnam iusto nostrum doloremque accusantium repudiandae
-                      expedita autem et, repellendus suscipit consequatur!
-                      Alias, maiores amet sunt ab inventore illo, deleniti
-                      facilis consequatur tenetur nam pariatur fuga nisi!
+                    Welcome to the plethora of multicuisine recipes.
                     </div>
                   </div>
                 </div>
@@ -101,13 +95,7 @@ const About = (props) => {
 
                   <div id="collapse2" class="collapse">
                     <div class="card-body">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Impedit odit laborum qui, debitis, sequi dolores nobis
-                      mollitia labore quasi earum laboriosam nihil cupiditate
-                      magnam iusto nostrum doloremque accusantium repudiandae
-                      expedita autem et, repellendus suscipit consequatur!
-                      Alias, maiores amet sunt ab inventore illo, deleniti
-                      facilis consequatur tenetur nam pariatur fuga nisi!
+                    Improve your culinary skills
                     </div>
                   </div>
                 </div>
@@ -127,13 +115,7 @@ const About = (props) => {
 
                   <div id="collapse3" class="collapse">
                     <div class="card-body">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Impedit odit laborum qui, debitis, sequi dolores nobis
-                      mollitia labore quasi earum laboriosam nihil cupiditate
-                      magnam iusto nostrum doloremque accusantium repudiandae
-                      expedita autem et, repellendus suscipit consequatur!
-                      Alias, maiores amet sunt ab inventore illo, deleniti
-                      facilis consequatur tenetur nam pariatur fuga nisi!
+                    Experience the world of cuisines
                     </div>
                   </div>
                 </div>
@@ -166,10 +148,10 @@ const About = (props) => {
                     />
                     <h3>Pooja</h3>
                     <h5 class="text-muted">Lead Writer</h5>
-                    <p>
+                    {/* <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sed commodi nostrum, ab libero voluptas officia.
-                    </p>
+                    </p> */}
                     {/* <div class="d-flex justify-content-center">
                     <div class="p-4">
                       <a href="http://facebook.com">
@@ -201,10 +183,10 @@ const About = (props) => {
                     />
                     <h3>Manisha</h3>
                     <h5 class="text-muted">Co-Writer</h5>
-                    <p>
+                    {/* <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sed commodi nostrum, ab libero voluptas officia.
-                    </p>
+                    </p> */}
                     {/* <div class="d-flex justify-content-center">
                     <div class="p-4">
                       <a href="http://facebook.com">
@@ -236,10 +218,10 @@ const About = (props) => {
                     />
                     <h3>Prashant</h3>
                     <h5 class="text-muted">Editor</h5>
-                    <p>
+                    {/* <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sed commodi nostrum, ab libero voluptas officia.
-                    </p>
+                    </p> */}
                     {/* <div class="d-flex justify-content-center">
                     <div class="p-4">
                       <a href="http://facebook.com">
@@ -271,10 +253,10 @@ const About = (props) => {
                     />
                     <h3>Lin</h3>
                     <h5 class="text-muted">Designer</h5>
-                    <p>
+                    {/* <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sed commodi nostrum, ab libero voluptas officia.
-                    </p>
+                    </p> */}
                     {/* <div class="d-flex justify-content-center">
                     <div class="p-4">
                       <a href="http://facebook.com">
@@ -306,10 +288,10 @@ const About = (props) => {
                     />
                     <h3>Jithendra</h3>
                     <h5 class="text-muted">Designer</h5>
-                    <p>
+                    {/* <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sed commodi nostrum, ab libero voluptas officia.
-                    </p>
+                    </p> */}
                     {/* <div class="d-flex justify-content-center">
                     <div class="p-4">
                       <a href="http://facebook.com">
@@ -341,10 +323,10 @@ const About = (props) => {
                     />
                     <h3>Liu</h3>
                     <h5 class="text-muted">Designer</h5>
-                    <p>
+                    {/* <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sed commodi nostrum, ab libero voluptas officia.
-                    </p>
+                    </p> */}
                     {/* <div class="d-flex justify-content-center">
                     <div class="p-4">
                       <a href="http://facebook.com">
