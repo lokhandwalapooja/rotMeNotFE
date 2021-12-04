@@ -31,6 +31,7 @@ const Router = (props) => {
             path={routes.MY_RECIPIES}
             component={RecipeContainer}
           />
+          <Route exact path={routes.INGREDIENTS} component={Ingredients} />
           <Route exact path={routes.ABOUT} component={About} />
           <Route path="*" render={() => <Redirect to={routes.ROOT} />} />
         </Switch>

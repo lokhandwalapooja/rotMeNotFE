@@ -167,10 +167,10 @@ export const approveRecipe = (id) => (dispatch) => {
   });
 };
 
-export const rejectRecipe = (id) => (dispatch) => {
+export const rejectRecipe = (id, rejectComment) => (dispatch) => {
   dispatch({
     type: RecipeActionTypes.REJECT_RECIPE,
-    payload: API.rejectRecipe(id)
+    payload: API.rejectRecipe(id, rejectComment)
       .then((response) => {
         closeModel();
         ReactTostify(response.data.Message, TostType.SUCCESS);

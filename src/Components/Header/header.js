@@ -46,7 +46,7 @@ const Header = (props) => {
                 Home
               </a>
             </li>
-            {role === Roles.ADMIN ? (
+            {/* {role === Roles.ADMIN ? ( */}
               <li className="nav-item">
                 <a
                   href="javascript:void(0)"
@@ -60,7 +60,7 @@ const Header = (props) => {
                   Ingredients
                 </a>
               </li>
-            ) : null}
+            {/* ) : null} */}
             <li className="nav-item">
               <a
                 href="javascript:void(0)"

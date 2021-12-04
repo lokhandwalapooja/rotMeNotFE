@@ -30,7 +30,7 @@ export const submitRecipe = (data) => {
 }
 
 export const deleteRecipe = (id) => {
-    return axios.post('recipe/delete', {id});
+    return axios.post('recipe/delete', {id, rejectComment: "abc"});
 }
 
 export const giveRating = (id, rating) => {
@@ -41,8 +41,8 @@ export const approveRecipe = (id) => {
     return axios.post('recipe/approve', {id})
 }
 
-export const rejectRecipe = (id) => {
-    return axios.post('recipe/reject', {id})
+export const rejectRecipe = (id, rejectComment) => {
+    return axios.post('recipe/reject', {id, rejectComment})
 }
 
 export const getPublishedRecipesList = () => {

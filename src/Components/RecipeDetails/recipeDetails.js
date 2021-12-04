@@ -202,6 +202,7 @@ const RecipeDetails = (props) => {
     timeToPrepare: recipeData?.timeToPrepare,
     ratings: recipeData?.ratings,
     video: recipeData?.video,
+    rejectComment: recipeData?.rejectComment,
     ingredients:
       recipeData?.ingredients?.length > 0
         ? setIngredients(recipeData?.ingredients)
@@ -209,6 +210,10 @@ const RecipeDetails = (props) => {
             { ingredient: "", quantity: "" },
             { ingredient: "", quantity: "" },
           ],
+  };
+
+  const CustomInputTextArea = (props) => {
+    return <textarea {...props} style={{ width: "80%", height: "100px" }} />;
   };
 
   return (
@@ -392,7 +397,10 @@ const RecipeDetails = (props) => {
                       </div>
 
                       {/* <!-- Editable table --> */}
-                      <div className="card" style={{ marginTop: "20px", marginBottom: "10px" }}>
+                      <div
+                        className="card"
+                        style={{ marginTop: "20px", marginBottom: "10px" }}
+                      >
                         <div className="card-body">
                           <div id="table" className="table-editable">
                             <span className="table-add float-right mb-3 mr-2">
@@ -564,14 +572,17 @@ const RecipeDetails = (props) => {
                           </tbody>
                         </table>
                       </div> */}
-                           <div className="form-row">
+                      <div className="form-row">
                         <div className="col">
                           {isRecipeReadOnly ? (
                             <a href={formik_props.values.video} target="_blank">
-                              {formik_props.values.video ? "Click here to view the video" : "No video Added"}</a>
+                              {formik_props.values.video
+                                ? "Click here to view the video"
+                                : "No video Added"}
+                            </a>
                           ) : (
                             <>
-                            <label for="video">Video</label>
+                              <label for="video">Video</label>
                               <Field
                                 name="video"
                                 className="form-control"
@@ -633,7 +644,27 @@ const RecipeDetails = (props) => {
                           </div>
                         ) : null}
                       </div>
-                      
+
+                      {isRecipeReadOnly &&
+                      (recipeData.status === RecipeStatus.PENDING || recipeData.status === RecipeStatus.REJECTED) ? (
+                        <div className="form-row form-group" style={{ marginTop: '10px'}}>
+                          <div className="col">
+                            <label for="comment">
+                              Reject Comment
+                              <span className="error">(if applicable)</span>
+                            </label>
+                            <div>
+                              <Field
+                                readOnly={recipeData.status === RecipeStatus.REJECTED}
+                                name="rejectComment"
+                                placeholder="Please add reson for rejection (if applicable)"
+                                as={CustomInputTextArea}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
+
                       <div className="form-row form-control mt-4">
                         <div className="col">
                           <h6>
@@ -674,9 +705,10 @@ const RecipeDetails = (props) => {
                             ) : (
                               <>
                                 <button
+                                  disabled={!formik_props.values.rejectComment}
                                   className="btn btn-danger"
                                   onClick={() =>
-                                    dispatch(rejectRecipe(recipeData._id))
+                                    dispatch(rejectRecipe(recipeData._id, formik_props.values.rejectComment))
                                   }
                                 >
                                   Reject
